@@ -67,6 +67,26 @@ extension String {
         
         return true
     }
+    
+    // Solution 4
+    func isStringCharactersUnique4() -> Bool {
+        // Without additional data structures
+        var checker = 0
+        
+        for scalar in self.unicodeScalars {
+            let intKey = scalar.value
+            
+            let val = Int(intKey - Unicode.Scalar.init(unicodeScalarLiteral: "a").value)
+            
+            if checker & (1 << val) > 0 {
+                return false
+            }
+            
+            checker |= 1 << val
+        }
+        
+        return true
+    }
 
     // * 1.2. Given two strings, write a method to decide if one is a permutation of the other
     // * Hints: 1, 84, 122, 131
