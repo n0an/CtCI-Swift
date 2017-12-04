@@ -106,7 +106,8 @@ extension String {
         
         return true
     }
-
+    
+    // ----------------------------
     // * 1.2. Given two strings, write a method to decide if one is a permutation of the other
     // * Hints: 1, 84, 122, 131
 
@@ -165,6 +166,101 @@ extension String {
         return set1 == set2
     }
     
+    // ----------------------------
+    // * 1.3. Replace all spaces in a string with '%20'
+    // * Hints: 53, 118
+    // Solution1. n0an
+    func urlify() -> String {
+        var outputStr = self.trimmingCharacters(in: [" "])
+        
+        let arr = outputStr.components(separatedBy: " ")
+        outputStr = arr.joined(separator: "%20")
+        
+        return outputStr
+    }
+    
+    // ----------------------------
+    // * 1.4. Palindrome permutation
+    // * Hints: 106, 121, 134, 136
+    
+    // Solution 1. n0an
+    func isPalnidromePermutation1() -> Bool {
+        
+        guard self.count > 1 else { return false }
+        
+        let strippedStr = self.lowercased().replacingOccurrences(of: " ", with: "")
+        
+        var letters = [Character]()
+        
+        for char in strippedStr {
+            
+            if let index = letters.index(of: char) {
+                letters.remove(at: index)
+            } else {
+                letters.append(char)
+            }
+        }
+        
+        return letters.count <= 1
+    }
+    
+    // Solution 2. CtCI
+    func isPalnidromePermutation2() -> Bool {
+        
+        let bitVector = createBitVector(fromString: self.lowercased())
+        return bitVector == 0 || checkExactlyOneBitSet(bitVector: bitVector)
+        
+    }
+    
+    // Create a bit vector for the string. For each letter with value i, toggle the ith bit
+    func createBitVector(fromString inputStr: String) -> Int {
+        
+        var bitVector = 0
+        
+        for scalar in inputStr.unicodeScalars {
+            
+            let intKey = scalar.value
+            let x = getCharNumber(scalarValue: intKey)
+            bitVector = toggle(bitVector: bitVector, index: x)
+        }
+        
+        return bitVector
+        
+    }
+    
+    func getCharNumber(scalarValue: UInt32) -> Int {
+        
+        let aVal = Unicode.Scalar.init(unicodeScalarLiteral: "a").value
+        let zVal = Unicode.Scalar.init(unicodeScalarLiteral: "z").value
+        
+        if aVal ... zVal ~= scalarValue {
+            return Int(scalarValue - aVal)
+        } else {
+            return -1
+        }
+    }
+    
+    // Toggle the ith bit in the integer
+    func toggle( bitVector: Int, index: Int) -> Int {
+        
+        var bitVector = bitVector
+        guard index >= 0 else { return bitVector }
+        
+        let mask = 1 << index
+        
+        if bitVector & mask == 0 {
+            bitVector |= mask
+        } else {
+            bitVector &= ~mask
+        }
+        
+        return bitVector
+    }
+    
+    func checkExactlyOneBitSet(bitVector: Int) -> Bool {
+        return bitVector & (bitVector - 1) == 0
+    }
+
     
 }
 
