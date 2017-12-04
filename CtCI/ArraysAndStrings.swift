@@ -17,7 +17,7 @@ extension String {
     // Solution 1
     func isStringCharactersUnique1() -> Bool {
         
-        guard self.count < 128 && self.count > 0 else { return false }
+        guard self.count <= 128 && self.count > 0 else { return false }
         guard self.count != 1 else { return true }
         
         let set = Set(self)
@@ -28,7 +28,7 @@ extension String {
     // Solution 2
     func isStringCharactersUnique2() -> Bool {
         
-        guard self.count < 128 && self.count > 0 else { return false }
+        guard self.count <= 128 && self.count > 0 else { return false }
         guard self.count != 1 else { return true }
         
         var list = Array<Bool?>(repeatElement(nil, count: 256))
@@ -46,16 +46,35 @@ extension String {
         return true
     }
     
+    // Solution 2a. PaulHudson
+    func isStringCharactersUnique2a() -> Bool {
+        
+        guard self.count <= 128 && self.count > 0 else { return false }
+        guard self.count != 1 else { return true }
+        
+        var usedLetters = [Character]()
+        
+        for letter in self {
+            if usedLetters.contains(letter) {
+                return false
+            }
+            
+            usedLetters.append(letter)
+        }
+        
+        return true
+    }
+    
     // Solution 3
     func isStringCharactersUnique3() -> Bool {
         // Without additional data structures
-        guard self.count < 128 && self.count > 0 else { return false }
+        guard self.count <= 128 && self.count > 0 else { return false }
         guard self.count != 1 else { return true }
         
-        for char in self.characters {
+        for char in self {
             var counter = 0
-            for ch in self.characters {
-                
+            
+            for ch in self {
                 if char == ch {
                     counter += 1
                     if counter > 1 {
@@ -68,7 +87,7 @@ extension String {
         return true
     }
     
-    // Solution 4
+    // Solution 4. CtCI
     func isStringCharactersUnique4() -> Bool {
         // Without additional data structures
         var checker = 0
@@ -94,19 +113,17 @@ extension String {
     // Solution 1
     func isStringPermutation1(inputStr: String) -> Bool {
         
-        guard self.count == inputStr.count else { return false }
-        
-        return self.characters.sorted() == inputStr.characters.sorted()
-        
+        return self.sorted() == inputStr.sorted()
+
     }
     
-    // Solution 2
+    // Solution 2. CtCI
     func isStringPermutation2(inputStr: String) -> Bool {
         
         guard self.count == inputStr.count else { return false }
         
         var letters = Array<Int>(repeating: 0, count: 256)
-        
+       
         for uScal in self.unicodeScalars {
             let intKey = Int(uScal.value)
             letters[intKey] += 1
@@ -122,6 +139,33 @@ extension String {
         
         return true
     }
+    
+    // Solution 3. PaulHudson
+    func isStringPermutation3(inputStr: String) -> Bool {
+        
+        var checkString = inputStr
+        
+        for letter in self {
+            if let index = checkString.index(of: letter) {
+                checkString.remove(at: index)
+            } else {
+                return false
+            }
+        }
+        
+        return checkString.count == 0
+    }
+    
+    // Solution 4. n0an
+    func isStringPermutation4(inputStr: String) -> Bool {
+        
+        let set1 = NSCountedSet(array: Array(self))
+        let set2 = NSCountedSet(array: Array(inputStr))
+        
+        return set1 == set2
+    }
+    
+    
 }
 
 

@@ -23,12 +23,14 @@ print(str112.isStringCharactersUnique2())
 print(str112.isStringCharactersUnique3())
 print(str111.isStringCharactersUnique4())
 
-
+print("------------------------------")
 
 // * 1.2. Given two strings, write a method to decide if one is a permutation of the other
 // * Hints: 1, 84, 122, 131
-/*
+
 let str121 = "Hello"
 let str122 = "ellHo"
-print(str121.isStringPermutation2(inputStr: str122))
-*/
+print(str121.isStringPermutation1(inputStr: str122))
+print(str121.isStringPermutation4(inputStr: str122))
+
+
