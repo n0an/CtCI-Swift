@@ -42,7 +42,7 @@ print("------------------------------")
 let str131 = "Replace all "
 print(str131.urlify())
 
-*/
+
 
 print("------------------------------")
 
@@ -52,7 +52,11 @@ print("------------------------------")
 let str141 = "Tact Coa"
 print(str141.isPalnidromePermutation1())
 print(str141.isPalnidromePermutation2())
+print(str141.isPalnidromePermutation3())
+print(str141.isPalnidromePermutation4())
+*/
 
+print("------------------------------")
 
 
 

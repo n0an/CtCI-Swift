@@ -14,7 +14,7 @@ extension String {
     // * 1.1. Is Unique: Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structures?
     // * Hints: 44, 117, 131
 
-    // Solution 1
+    // Solution 1. n0an
     func isStringCharactersUnique1() -> Bool {
         
         guard self.count <= 128 && self.count > 0 else { return false }
@@ -25,7 +25,7 @@ extension String {
         return set.count == self.count
     }
     
-    // Solution 2
+    // Solution 2. CtCI
     func isStringCharactersUnique2() -> Bool {
         
         guard self.count <= 128 && self.count > 0 else { return false }
@@ -46,7 +46,8 @@ extension String {
         return true
     }
     
-    // Solution 2a. PaulHudson
+    // Solution 2a
+    // PaulHudson
     func isStringCharactersUnique2a() -> Bool {
         
         guard self.count <= 128 && self.count > 0 else { return false }
@@ -65,7 +66,7 @@ extension String {
         return true
     }
     
-    // Solution 3
+    // Solution 3. CtCI
     func isStringCharactersUnique3() -> Bool {
         // Without additional data structures
         guard self.count <= 128 && self.count > 0 else { return false }
@@ -205,6 +206,7 @@ extension String {
     }
     
     // Solution 2. CtCI
+    // ~ elegant
     func isPalnidromePermutation2() -> Bool {
         
         let bitVector = createBitVector(fromString: self.lowercased())
@@ -260,6 +262,81 @@ extension String {
     func checkExactlyOneBitSet(bitVector: Int) -> Bool {
         return bitVector & (bitVector - 1) == 0
     }
+    
+    // Solution 3. CtCI
+    // ~ brute
+    func isPalnidromePermutation3() -> Bool {
+        let table = buildCharFrequencyTable(phrase: self.lowercased())
+        return checkMaxOneOdd(table: table)
+    }
+    
+    func checkMaxOneOdd(table: [Int]) -> Bool {
+        var foundOdd = false
+        
+        for count in table {
+            if count % 2 == 1 {
+                if foundOdd {
+                    return false
+                }
+                foundOdd = true
+            }
+        }
+        
+        return true
+    }
+    
+    func buildCharFrequencyTable(phrase: String) -> [Int] {
+        
+        let aVal = Int(Unicode.Scalar.init(unicodeScalarLiteral: "a").value)
+        let zVal = Int(Unicode.Scalar.init(unicodeScalarLiteral: "z").value)
+        
+        var table: [Int] = Array<Int>.init(repeating: 0, count: zVal - aVal + 1)
+        
+        for scalar in phrase.unicodeScalars {
+            
+            let intKey = scalar.value
+            let x = getCharNumber(scalarValue: intKey)
+            
+            if x != -1 {
+                table[x] += 1
+            }
+            
+        }
+        
+        return table
+    }
+
+    // Solution 3. CtCI
+    // ~ brute optimized
+    func isPalnidromePermutation4() -> Bool {
+        
+        var countOdd = 0
+        
+        let aVal = Int(Unicode.Scalar.init(unicodeScalarLiteral: "a").value)
+        let zVal = Int(Unicode.Scalar.init(unicodeScalarLiteral: "z").value)
+        
+        var table: [Int] = Array<Int>.init(repeating: 0, count: zVal - aVal + 1)
+        
+        for scalar in self.lowercased().unicodeScalars {
+            
+            let intKey = scalar.value
+            let x = getCharNumber(scalarValue: intKey)
+            
+            if x != -1 {
+                table[x] += 1
+                
+                if table[x] % 2 == 1 {
+                    countOdd += 1
+                } else {
+                    countOdd -= 1
+                }
+            }
+        }
+        
+        return countOdd <= 1
+    }
+    
+    
 
     
 }
