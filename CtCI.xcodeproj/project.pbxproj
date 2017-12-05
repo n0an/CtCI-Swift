@@ -8,8 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		182E0AF11FD464EB009B7AB7 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E0AF01FD464EB009B7AB7 /* main.swift */; };
-		182E0AF81FD4669C009B7AB7 /* ArraysAndStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E0AF71FD4669C009B7AB7 /* ArraysAndStrings.swift */; };
+		185748DB1FD72EF20045CB6C /* CtCI_TasksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185748DA1FD72EF20045CB6C /* CtCI_TasksTests.swift */; };
+		185748DD1FD72EF20045CB6C /* CtCI_Tasks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185748BD1FD72E970045CB6C /* CtCI_Tasks.framework */; };
+		185748E41FD72F010045CB6C /* ArraysAndStringsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185748E31FD72F010045CB6C /* ArraysAndStringsTests.swift */; };
+		185748E51FD72F630045CB6C /* ArraysAndStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E0AF71FD4669C009B7AB7 /* ArraysAndStrings.swift */; };
+		185748E61FD72FAB0045CB6C /* ArraysAndStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E0AF71FD4669C009B7AB7 /* ArraysAndStrings.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		185748DE1FD72EF20045CB6C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 182E0AE51FD464EA009B7AB7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 185748BC1FD72E970045CB6C;
+			remoteInfo = "CtCI Tasks";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		182E0AEB1FD464EB009B7AB7 /* CopyFiles */ = {
@@ -27,6 +41,12 @@
 		182E0AED1FD464EB009B7AB7 /* CtCI */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CtCI; sourceTree = BUILT_PRODUCTS_DIR; };
 		182E0AF01FD464EB009B7AB7 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		182E0AF71FD4669C009B7AB7 /* ArraysAndStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArraysAndStrings.swift; sourceTree = "<group>"; };
+		185748BD1FD72E970045CB6C /* CtCI_Tasks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CtCI_Tasks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		185748C01FD72E970045CB6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		185748D81FD72EF20045CB6C /* CtCI_TasksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CtCI_TasksTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		185748DA1FD72EF20045CB6C /* CtCI_TasksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtCI_TasksTests.swift; sourceTree = "<group>"; };
+		185748DC1FD72EF20045CB6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		185748E31FD72F010045CB6C /* ArraysAndStringsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArraysAndStringsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +57,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		185748B91FD72E970045CB6C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		185748D51FD72EF20045CB6C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				185748DD1FD72EF20045CB6C /* CtCI_Tasks.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -44,6 +79,8 @@
 			isa = PBXGroup;
 			children = (
 				182E0AEF1FD464EB009B7AB7 /* CtCI */,
+				185748BE1FD72E970045CB6C /* CtCI Tasks */,
+				185748D91FD72EF20045CB6C /* CtCI_TasksTests */,
 				182E0AEE1FD464EB009B7AB7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,6 +89,8 @@
 			isa = PBXGroup;
 			children = (
 				182E0AED1FD464EB009B7AB7 /* CtCI */,
+				185748BD1FD72E970045CB6C /* CtCI_Tasks.framework */,
+				185748D81FD72EF20045CB6C /* CtCI_TasksTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -60,12 +99,40 @@
 			isa = PBXGroup;
 			children = (
 				182E0AF01FD464EB009B7AB7 /* main.swift */,
-				182E0AF71FD4669C009B7AB7 /* ArraysAndStrings.swift */,
 			);
 			path = CtCI;
 			sourceTree = "<group>";
 		};
+		185748BE1FD72E970045CB6C /* CtCI Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				182E0AF71FD4669C009B7AB7 /* ArraysAndStrings.swift */,
+				185748C01FD72E970045CB6C /* Info.plist */,
+			);
+			path = "CtCI Tasks";
+			sourceTree = "<group>";
+		};
+		185748D91FD72EF20045CB6C /* CtCI_TasksTests */ = {
+			isa = PBXGroup;
+			children = (
+				185748DA1FD72EF20045CB6C /* CtCI_TasksTests.swift */,
+				185748E31FD72F010045CB6C /* ArraysAndStringsTests.swift */,
+				185748DC1FD72EF20045CB6C /* Info.plist */,
+			);
+			path = CtCI_TasksTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		185748BA1FD72E970045CB6C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		182E0AEC1FD464EB009B7AB7 /* CtCI */ = {
@@ -85,6 +152,42 @@
 			productReference = 182E0AED1FD464EB009B7AB7 /* CtCI */;
 			productType = "com.apple.product-type.tool";
 		};
+		185748BC1FD72E970045CB6C /* CtCI Tasks */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 185748C21FD72E970045CB6C /* Build configuration list for PBXNativeTarget "CtCI Tasks" */;
+			buildPhases = (
+				185748B81FD72E970045CB6C /* Sources */,
+				185748B91FD72E970045CB6C /* Frameworks */,
+				185748BA1FD72E970045CB6C /* Headers */,
+				185748BB1FD72E970045CB6C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "CtCI Tasks";
+			productName = "CtCI Tasks";
+			productReference = 185748BD1FD72E970045CB6C /* CtCI_Tasks.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		185748D71FD72EF20045CB6C /* CtCI_TasksTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 185748E01FD72EF20045CB6C /* Build configuration list for PBXNativeTarget "CtCI_TasksTests" */;
+			buildPhases = (
+				185748D41FD72EF20045CB6C /* Sources */,
+				185748D51FD72EF20045CB6C /* Frameworks */,
+				185748D61FD72EF20045CB6C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				185748DF1FD72EF20045CB6C /* PBXTargetDependency */,
+			);
+			name = CtCI_TasksTests;
+			productName = CtCI_TasksTests;
+			productReference = 185748D81FD72EF20045CB6C /* CtCI_TasksTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -96,6 +199,14 @@
 				ORGANIZATIONNAME = "Anton Novoselov";
 				TargetAttributes = {
 					182E0AEC1FD464EB009B7AB7 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
+					185748BC1FD72E970045CB6C = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
+					185748D71FD72EF20045CB6C = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
 					};
@@ -114,21 +225,65 @@
 			projectRoot = "";
 			targets = (
 				182E0AEC1FD464EB009B7AB7 /* CtCI */,
+				185748BC1FD72E970045CB6C /* CtCI Tasks */,
+				185748D71FD72EF20045CB6C /* CtCI_TasksTests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		185748BB1FD72E970045CB6C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		185748D61FD72EF20045CB6C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		182E0AE91FD464EB009B7AB7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				182E0AF81FD4669C009B7AB7 /* ArraysAndStrings.swift in Sources */,
+				185748E61FD72FAB0045CB6C /* ArraysAndStrings.swift in Sources */,
 				182E0AF11FD464EB009B7AB7 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		185748B81FD72E970045CB6C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				185748E51FD72F630045CB6C /* ArraysAndStrings.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		185748D41FD72EF20045CB6C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				185748E41FD72F010045CB6C /* ArraysAndStringsTests.swift in Sources */,
+				185748DB1FD72EF20045CB6C /* CtCI_TasksTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		185748DF1FD72EF20045CB6C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 185748BC1FD72E970045CB6C /* CtCI Tasks */;
+			targetProxy = 185748DE1FD72EF20045CB6C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		182E0AF21FD464EB009B7AB7 /* Debug */ = {
@@ -257,6 +412,86 @@
 			};
 			name = Release;
 		};
+		185748C31FD72E970045CB6C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 358V8FBM3U;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "CtCI Tasks/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.antonnovoselov.CtCI-Tasks";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		185748C41FD72E970045CB6C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 358V8FBM3U;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "CtCI Tasks/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.antonnovoselov.CtCI-Tasks";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		185748E11FD72EF20045CB6C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 358V8FBM3U;
+				INFOPLIST_FILE = CtCI_TasksTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.antonnovoselov.CtCI-TasksTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		185748E21FD72EF20045CB6C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 358V8FBM3U;
+				INFOPLIST_FILE = CtCI_TasksTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.antonnovoselov.CtCI-TasksTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -274,6 +509,24 @@
 			buildConfigurations = (
 				182E0AF51FD464EB009B7AB7 /* Debug */,
 				182E0AF61FD464EB009B7AB7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		185748C21FD72E970045CB6C /* Build configuration list for PBXNativeTarget "CtCI Tasks" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				185748C31FD72E970045CB6C /* Debug */,
+				185748C41FD72E970045CB6C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		185748E01FD72EF20045CB6C /* Build configuration list for PBXNativeTarget "CtCI_TasksTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				185748E11FD72EF20045CB6C /* Debug */,
+				185748E21FD72EF20045CB6C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

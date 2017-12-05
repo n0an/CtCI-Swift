@@ -336,8 +336,62 @@ extension String {
         return countOdd <= 1
     }
     
+    // ----------------------------
+    // * 1.5. One Away
+    // * Hints: 23, 97, 130
     
-
+    static func isOneAway(inputStr1: String, inputStr2: String) -> Bool {
+        
+        guard abs(inputStr1.count - inputStr2.count) <= 1 else {
+            return false
+        }
+        
+        guard inputStr1 != inputStr2 else {
+            return false
+        }
+        
+        if inputStr1.count == inputStr2.count {
+            
+            var oneDifferentChar = false
+            
+            for charS1 in inputStr1 {
+                
+                if !inputStr2.contains(charS1) {
+                    if oneDifferentChar == true {
+                        return false
+                    }
+                    oneDifferentChar = true
+                }
+            }
+            
+            return true
+        }
+        
+        if inputStr2.count > inputStr1.count {
+          
+            return inputStr2.checkStrContainsAllChars(str1: inputStr1)
+        }
+        
+        if inputStr2.count < inputStr1.count {
+            
+            return inputStr1.checkStrContainsAllChars(str1: inputStr2)
+        }
+        
+        return false
+        
+    }
+    
+    func checkStrContainsAllChars(str1: String) -> Bool {
+        for charS1 in str1 {
+            if !self.contains(charS1) {
+                return false
+            }
+        }
+        
+        return true
+    }
+    
+    
     
 }
 
