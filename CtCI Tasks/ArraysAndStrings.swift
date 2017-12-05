@@ -339,8 +339,8 @@ extension String {
     // ----------------------------
     // * 1.5. One Away
     // * Hints: 23, 97, 130
-    
-    static func isOneAway(inputStr1: String, inputStr2: String) -> Bool {
+    // Solution 1. n0an. O(n2)
+    static func oneEditAway1(inputStr1: String, inputStr2: String) -> Bool {
         
         guard abs(inputStr1.count - inputStr2.count) <= 1 else {
             return false
@@ -386,6 +386,91 @@ extension String {
             if !self.contains(charS1) {
                 return false
             }
+        }
+        
+        return true
+    }
+    
+    // Solution 2. CtCI. O(n)
+    static func oneEditAway2(first: String, second: String) -> Bool {
+        
+        if first.count == second.count {
+            return first.oneEditReplace(s2: second)
+        } else if first.count + 1 == second.count {
+            return first.oneEditInsert(s2: second)
+        } else if first.count - 1 == second.count {
+            return second.oneEditInsert(s2: first)
+        }
+        
+        return false
+    }
+    
+    func oneEditReplace(s2: String) -> Bool {
+        var foundDifference = false
+        
+        for index in 0 ..< self.count {
+            if Array(self)[index] != Array(s2)[index] {
+                if foundDifference {
+                    return false
+                }
+                foundDifference = true
+            }
+        }
+        return true
+    }
+    
+    func oneEditInsert(s2: String) -> Bool {
+        var index1 = 0
+        var index2 = 0
+        
+        while index2 < s2.count && index1 < self.count {
+            if Array(self)[index1] != Array(s2)[index2] {
+                if index1 != index2 {
+                    return false
+                }
+                index2 += 1
+            } else {
+                index1 += 1
+                index2 += 1
+            }
+        }
+        
+        return true
+    }
+    
+    // Solution 3. CtCI. O(n). Optimized
+    static func oneEditAway3(first: String, second: String) -> Bool {
+        
+        guard abs(first.count - second.count) <= 1 else {
+            return false
+        }
+        
+        let s1 = first.count < second.count ? first : second
+        let s2 = first.count < second.count ? second : first
+        
+        var index1 = 0
+        var index2 = 0
+        
+        var foundDifference = false
+        
+        while index2 < s2.count && index1 < s1.count {
+            
+            if Array(s1)[index1] != Array(s2)[index2] {
+                // Ensure this is the first difference found
+                if foundDifference {
+                    return false
+                }
+                foundDifference = true
+                
+                if s1.count == s2.count {
+                    // On replace, move shorter pointer
+                    index1 += 1
+                }
+            } else {
+                index1 += 1 // if matching, move shorter pointer
+            }
+            index2 += 1 // Always move pointer for longer string
+            
         }
         
         return true

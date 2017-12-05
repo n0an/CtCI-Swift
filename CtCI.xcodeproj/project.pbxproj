@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		182E0AF11FD464EB009B7AB7 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E0AF01FD464EB009B7AB7 /* main.swift */; };
-		185748DB1FD72EF20045CB6C /* CtCI_TasksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185748DA1FD72EF20045CB6C /* CtCI_TasksTests.swift */; };
 		185748DD1FD72EF20045CB6C /* CtCI_Tasks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185748BD1FD72E970045CB6C /* CtCI_Tasks.framework */; };
 		185748E41FD72F010045CB6C /* ArraysAndStringsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185748E31FD72F010045CB6C /* ArraysAndStringsTests.swift */; };
 		185748E51FD72F630045CB6C /* ArraysAndStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E0AF71FD4669C009B7AB7 /* ArraysAndStrings.swift */; };
@@ -44,7 +43,6 @@
 		185748BD1FD72E970045CB6C /* CtCI_Tasks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CtCI_Tasks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		185748C01FD72E970045CB6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		185748D81FD72EF20045CB6C /* CtCI_TasksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CtCI_TasksTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		185748DA1FD72EF20045CB6C /* CtCI_TasksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CtCI_TasksTests.swift; sourceTree = "<group>"; };
 		185748DC1FD72EF20045CB6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		185748E31FD72F010045CB6C /* ArraysAndStringsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArraysAndStringsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,7 +113,6 @@
 		185748D91FD72EF20045CB6C /* CtCI_TasksTests */ = {
 			isa = PBXGroup;
 			children = (
-				185748DA1FD72EF20045CB6C /* CtCI_TasksTests.swift */,
 				185748E31FD72F010045CB6C /* ArraysAndStringsTests.swift */,
 				185748DC1FD72EF20045CB6C /* Info.plist */,
 			);
@@ -271,7 +268,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				185748E41FD72F010045CB6C /* ArraysAndStringsTests.swift in Sources */,
-				185748DB1FD72EF20045CB6C /* CtCI_TasksTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
