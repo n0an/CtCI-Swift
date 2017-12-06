@@ -445,8 +445,7 @@ extension String {
             return false
         }
         
-        let s1 = first.count < second.count ? first : second
-        let s2 = first.count < second.count ? second : first
+        let (s1, s2) = first.count < second.count ? (first, second) : (second, first)
         
         var index1 = 0
         var index2 = 0
@@ -476,9 +475,109 @@ extension String {
         return true
     }
     
+    // ----------------------------
+    // * 1.6. String Compression
+    // * Hints: 92, 110
+    // Solution 1. n0an
+    func compressString() -> String {
+        
+        let setFromString = Set(self)
+        
+        if setFromString.count == self.count {
+            return self
+        }
+        
+        var outStr = ""
+        
+        var charAccumulator = 1
+        
+        for index in 1 ..< self.count {
+            
+            let currentChar = Array(self)[index]
+            let prevChar = Array(self)[index - 1]
+            
+            if currentChar == prevChar {
+                charAccumulator += 1
+            } else {
+                outStr += "\(prevChar)\(charAccumulator)"
+                charAccumulator = 1
+            }
+        }
+        
+        outStr += "\(Array(self)[self.count - 1])\(charAccumulator)"
+
+        return outStr
+    }
     
     
 }
+
+// ----------------------------
+// * 1.7. Rotate Matrix
+// * Hints: 51, 100
+// Solution 1. n0an
+func rotateMatrix1<T: Comparable>(_ startMatrix: Array<Array<T>>) -> Array<Array<T>>? {
+    
+    for element in startMatrix {
+        if element.count != startMatrix.count {
+            return nil
+        }
+    }
+    
+    var outMatrix = Array<Array<T>>()
+    
+    for mainIndex in 0 ..< startMatrix.count {
+        
+        var outMatrixInnerArr = Array<T>()
+        
+        for index1 in stride(from: startMatrix.count - 1, through: 0, by: -1) {
+            let innerArr = startMatrix[index1]
+            
+            outMatrixInnerArr.append(innerArr[mainIndex])
+        }
+        
+        outMatrix.append(outMatrixInnerArr)
+    }
+    
+    return outMatrix
+}
+
+// Solution 2. CtCI
+func rotateMatrix2(_ matrix: inout [[Int]]) -> Bool {
+    
+    if matrix.count == 0 || matrix.count != matrix[0].count {
+        return false
+    }
+    
+    let n = matrix.count
+    
+    for layer in 0 ..< n / 2 {
+        let first = layer
+        let last = n - 1 - layer
+        
+        for i in first ..< last {
+            let offset = i - first
+            
+            let top = matrix[first][i] // save top
+            
+            // left -> top
+            matrix[first][i] = matrix[last - offset][first]
+            
+            // bottom -> left
+            matrix[last - offset][first] = matrix[last][last - offset]
+            
+            // right -> bottom
+            matrix[last][last - offset] = matrix[i][last]
+            
+            // top -> right
+            matrix[i][last] = top // right <- saved top
+        }
+    }
+    
+    return true
+}
+
+
 
 
 

@@ -29,7 +29,6 @@ class ArraysAndStringsTests: XCTestCase {
     let greetingTask1_4 = "------ 1.4. Palindrome permutation ------"
     let str141 = "Tact Coa"
     let str142 = "Tact Coab"
-
     
     let greetingTask1_5 = "------ 1.5. One Away ------"
     let str151 = "pale"
@@ -38,6 +37,10 @@ class ArraysAndStringsTests: XCTestCase {
     let str153 = "pales"
     let str154 = "bale"
     let str155 = "bake"
+    
+    let greetingTask1_6 = "------ 1.6. String Compression ------"
+    let str161 = "aabcccccaaa"
+    let str162 = "abcd"
     
     override func setUp() {
         super.setUp()
@@ -73,7 +76,7 @@ class ArraysAndStringsTests: XCTestCase {
     // * Hints: 106, 121, 134, 136
     func test1_4_isPalindromePermutation() {
         print(greetingTask1_4)
-
+        
         XCTAssertTrue(str141.isPalnidromePermutation1())
         XCTAssertTrue(str141.isPalnidromePermutation2())
         XCTAssertTrue(str141.isPalnidromePermutation3())
@@ -85,8 +88,6 @@ class ArraysAndStringsTests: XCTestCase {
         XCTAssertFalse(str142.isPalnidromePermutation4())
     }
     
-    
-    
     // * 1.5. One Away
     // * Hints: 23, 97, 130
     func test1_5_isOneAwayEdit1() {
@@ -96,12 +97,11 @@ class ArraysAndStringsTests: XCTestCase {
         XCTAssertTrue(String.oneEditAway1(inputStr1: str153, inputStr2: str151), "No one away")
         XCTAssertTrue(String.oneEditAway1(inputStr1: str151, inputStr2: str154), "No one away")
         XCTAssertFalse(String.oneEditAway1(inputStr1: str151, inputStr2: str155), "Must be false")
-
     }
     
     func test1_5_isOneAwayEdit2() {
         print(greetingTask1_5)
-
+        
         XCTAssertTrue(String.oneEditAway2(first: str151, second: str152), "No one away edit")
         XCTAssertTrue(String.oneEditAway2(first: str153, second: str151), "No one away edit")
         XCTAssertTrue(String.oneEditAway2(first: str151, second: str154), "No one away edit")
@@ -110,11 +110,106 @@ class ArraysAndStringsTests: XCTestCase {
     
     func test1_5_isOneAwayEdit3() {
         print(greetingTask1_5)
-
+        
         XCTAssertTrue(String.oneEditAway3(first: str151, second: str152), "No one away edit")
         XCTAssertTrue(String.oneEditAway3(first: str153, second: str151), "No one away edit")
         XCTAssertTrue(String.oneEditAway3(first: str151, second: str154), "No one away edit")
         XCTAssertFalse(String.oneEditAway3(first: str151, second: str155), "Must be false")
     }
     
+    // * 1.6. String Compression
+    // * Hints: 92, 110
+    func test1_6_stringCompression() {
+        print(greetingTask1_6)
+        
+        XCTAssertEqual(str161.compressString(), "a2b1c5a3")
+        XCTAssertEqual(str162.compressString(), "abcd")
+        XCTAssertEqual("a".compressString(), "a")
+        XCTAssertEqual("aaabb".compressString(), "a3b2")
+    }
+    
+    // * 1.7. Rotate Matrix
+    // * Hints: 51, 100
+    func test1_7_rotateMatrix3x3() {
+        let startMatrix = [["a", "b", "c"],
+                           ["d", "e", "f"],
+                           ["g", "h", "i"]]
+        
+        let rotatedMatrix = [["g", "d", "a"],
+                             ["h", "e", "b"],
+                             ["i", "f", "c"]]
+        
+        let rotatedInReal = rotateMatrix1(startMatrix)
+        
+        XCTAssertNotNil(rotatedInReal)
+        
+        XCTAssertTrue(rotatedMatrix.elementsEqual(rotatedInReal!) { $0 == $1 })
+
+        
+        let rotatedAgainMatrix = [["i", "h", "g"],
+                                  ["f", "e", "d"],
+                                  ["c", "b", "a"]]
+        let rotatedInRealAgain = rotateMatrix1(rotatedInReal!)
+        
+        XCTAssertNotNil(rotatedInRealAgain)
+        
+        XCTAssertTrue(rotatedAgainMatrix.elementsEqual(rotatedInRealAgain!) { $0 == $1 })
+    }
+    
+    func test1_7_rotateMatrix5x5() {
+        let startMatrix = [["a", "b", "c", "d", "e"],
+                           ["f", "g", "h", "i", "g"],
+                           ["k", "l", "m", "n", "o"],
+                           ["p", "q", "r", "s", "t"],
+                           ["u", "v", "w", "x", "y"]]
+        
+        let rotatedMatrix = [["u", "p", "k", "f", "a"],
+                             ["v", "q", "l", "g", "b"],
+                             ["w", "r", "m", "h", "c"],
+                             ["x", "s", "n", "i", "d"],
+                             ["y", "t", "o", "g", "e"]]
+        
+        var rotatedInReal = rotateMatrix1(startMatrix)
+        
+        XCTAssertNotNil(rotatedInReal)
+        
+        for index in 0 ..< rotatedMatrix.count {
+            XCTAssertEqual(rotatedMatrix[index], rotatedInReal![index])
+        }
+    }
+    
+    func test1_7_2_rotateMatrix3x3() {
+        var startMatrix = [[1, 2, 3],
+                           [4, 5, 6],
+                           [7, 8, 9]]
+        
+        let rotatedMatrix = [[7, 4, 1],
+                             [8, 5, 2],
+                             [9, 6, 3]]
+        
+        XCTAssertTrue(rotateMatrix2(&startMatrix))
+        
+        for index in 0 ..< rotatedMatrix.count {
+            XCTAssertEqual(rotatedMatrix[index], startMatrix[index])
+        }
+    }
+    
+    func test1_7_2_rotateMatrix4x4() {
+        var startMatrix = [[1, 2, 3, 4],
+                           [5, 6, 7, 8],
+                           [9, 10, 11, 12],
+                           [13, 14, 15, 16]]
+        
+        let rotatedMatrix = [[13, 9, 5, 1],
+                             [14, 10, 6, 2],
+                             [15, 11, 7, 3],
+                             [16, 12, 8, 4]]
+        
+        XCTAssertTrue(rotateMatrix2(&startMatrix))
+        
+        XCTAssertTrue(startMatrix.elementsEqual(rotatedMatrix) { $0 == $1 })
+    }
 }
+
+
+
