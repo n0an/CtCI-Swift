@@ -708,18 +708,17 @@ func setZeroes2(_ matrix: inout [[Int]]) {
     if colHasZero {
         nullifyColumn(&matrix, 0)
     }
-
 }
 
-
-
-
-
-
-
-
-
-
-
-
+extension String {
+    // ----------------------------
+    // * 1.9. String Rotation
+    // * Hints: 34, 88, 104
+    static func isStringRotation(s1: String, s2: String) -> Bool {
+        guard s1.count == s2.count && s1.count > 0 else { return false }
+        
+        let s1s1 = s1 + s1
+        return s1s1.contains(s2)
+    }
+}
 

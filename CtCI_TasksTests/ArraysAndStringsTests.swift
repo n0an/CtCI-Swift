@@ -96,6 +96,8 @@ class ArraysAndStringsTests: XCTestCase {
                              [9, 10, 0, 12, 31, 12],
                              [9, 10, 0, 12, 31, 12]]
     
+    let str191 = "watterbottle"
+    let str192 = "erbottlewat"
     
     override func setUp() {
         super.setUp()
@@ -239,6 +241,13 @@ class ArraysAndStringsTests: XCTestCase {
     func test1_8_3_zeroMatrix() {
         setZeroes2(&startMatrix1_8)
         XCTAssertTrue(nulifiedMatrix1_8.elementsEqual(startMatrix1_8) { $0 == $1 })
+    }
+    
+    // * 1.9. String Rotation
+    // * Hints: 34, 88, 104
+    func test1_8_1_stringRotation() {
+        
+        XCTAssertTrue(String.isStringRotation(s1: "waterbottle", s2: "erbottlewat"))
     }
 }
 
