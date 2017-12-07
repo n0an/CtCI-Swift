@@ -577,6 +577,143 @@ func rotateMatrix2(_ matrix: inout [[Int]]) -> Bool {
     return true
 }
 
+// ----------------------------
+// * 1.8. Zero Matrix
+// * Hints: 17, 74, 102
+// Solution 1. n0an. O(MN)
+func zeroMatrix1(_ matrix: [[Int]]) -> [[Int]] {
+    
+    var outMatrix = matrix
+    var zeroes = [(x: Int, y: Int)]()
+    
+    // 1. Gather 0's coordinates in original matrix
+    for indexY in 0 ..< matrix.count {
+        for indexX in 0 ..< matrix[0].count {
+            if matrix[indexY][indexX] == 0 {
+                zeroes.append((indexX, indexY))
+            }
+        }
+    }
+    
+    // 2. Nulify rows and columns in output matrix
+    for zero in zeroes {
+        nullifyRow(&outMatrix, zero.y)
+        nullifyColumn(&outMatrix, zero.x)
+    }
+    
+    return outMatrix
+}
+
+func nullifyMatrixRow(_ row: inout [Int]) {
+    
+    for index in 0 ..< row.count {
+        row[index] = 0
+    }
+}
+
+// Solution 2. CtCI. O(N)
+func setZeroes1(_ matrix: inout [[Int]]) {
+    
+    var row = [Bool](repeatElement(false, count: matrix.count))
+    var column = [Bool](repeatElement(false, count: matrix[0].count))
+    
+    // Store the row and column index with value 0
+    for i in 0 ..< matrix.count {
+        for j in 0 ..< matrix[0].count {
+            if matrix[i][j] == 0 {
+                row[i] = true
+                column[j] = true
+            }
+        }
+    }
+    
+    // Nullify rows
+    for i in 0 ..< row.count {
+        if row[i] {
+            nullifyRow(&matrix, i)
+        }
+    }
+    
+    // Nullify columns
+    for j in 0 ..< column.count {
+        if column[j] {
+            nullifyColumn(&matrix, j)
+        }
+    }
+}
+
+func nullifyRow(_ matrix: inout [[Int]], _ row: Int) {
+    for j in 0 ..< matrix[0].count {
+        matrix[row][j] = 0
+    }
+}
+
+func nullifyColumn(_ matrix: inout [[Int]], _ col: Int) {
+    for i in 0 ..< matrix.count {
+        matrix[i][col] = 0
+    }
+}
+
+// Solution 3. CtCI. Optimized. O(1)
+func setZeroes2(_ matrix: inout [[Int]]) {
+    var rowHasZero = false
+    var colHasZero = false
+    
+    // Check if first row has a zero
+    for j in 0 ..< matrix[0].count {
+        if matrix[0][j] == 0 {
+            rowHasZero = true
+            break
+        }
+    }
+    
+    // Check if first column has a zero
+    for i in 0 ..< matrix.count {
+        if matrix[i][0] == 0 {
+            colHasZero = true
+            break
+        }
+    }
+    
+    // Check for zeros in the rest of the array
+    for i in 1 ..< matrix.count {
+        for j in 1 ..< matrix[0].count {
+            if matrix[i][j] == 0 {
+                matrix[i][0] = 0
+                matrix[0][j] = 0
+            }
+        }
+    }
+    
+    // Nullify rows based on values in first column
+    for i in 1 ..< matrix.count {
+        if matrix[i][0] == 0 {
+            nullifyRow(&matrix, i)
+        }
+    }
+    
+    // Nullify columns based on values in first row
+    for j in 1 ..< matrix[0].count {
+        if matrix[0][j] == 0 {
+            nullifyColumn(&matrix, j)
+        }
+    }
+    
+    // Nullify first row
+    if rowHasZero {
+        nullifyRow(&matrix, 0)
+    }
+    
+    // Nullify first column
+    if colHasZero {
+        nullifyColumn(&matrix, 0)
+    }
+
+}
+
+
+
+
 
 
 

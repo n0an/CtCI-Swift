@@ -42,6 +42,61 @@ class ArraysAndStringsTests: XCTestCase {
     let str161 = "aabcccccaaa"
     let str162 = "abcd"
     
+    let startMatrix1_7_str3x3 = [["a", "b", "c"],
+                                 ["d", "e", "f"],
+                                 ["g", "h", "i"]]
+    
+    let rotatedMatrix1_7_str3x3 = [["g", "d", "a"],
+                                   ["h", "e", "b"],
+                                   ["i", "f", "c"]]
+    
+    let rotatedAgainMatrix1_7_3x3 = [["i", "h", "g"],
+                                     ["f", "e", "d"],
+                                     ["c", "b", "a"]]
+    
+    let startMatrix1_7_str5x5 = [["a", "b", "c", "d", "e"],
+                                 ["f", "g", "h", "i", "g"],
+                                 ["k", "l", "m", "n", "o"],
+                                 ["p", "q", "r", "s", "t"],
+                                 ["u", "v", "w", "x", "y"]]
+    
+    let rotatedMatrix1_7_str5x5 = [["u", "p", "k", "f", "a"],
+                                   ["v", "q", "l", "g", "b"],
+                                   ["w", "r", "m", "h", "c"],
+                                   ["x", "s", "n", "i", "d"],
+                                   ["y", "t", "o", "g", "e"]]
+    
+    var startMatrix1_7_3x3 = [[1, 2, 3],
+                              [4, 5, 6],
+                              [7, 8, 9]]
+    
+    let rotatedMatrix1_7_3x3 = [[7, 4, 1],
+                                [8, 5, 2],
+                                [9, 6, 3]]
+    
+    var startMatrix1_7_4x4 = [[1, 2, 3, 4],
+                              [5, 6, 7, 8],
+                              [9, 10, 11, 12],
+                              [13, 14, 15, 16]]
+    
+    let rotatedMatrix1_7_4x4 = [[13, 9, 5, 1],
+                                [14, 10, 6, 2],
+                                [15, 11, 7, 3],
+                                [16, 12, 8, 4]]
+    
+    var startMatrix1_8 = [[1, 2, 3, 4, 99, 34],
+                          [5, 6, 0, 8, 22, 44],
+                          [9, 10, 11, 12, 31, 12],
+                          [9, 10, 11, 12, 31, 12],
+                          [9, 10, 11, 12, 31, 12]]
+    
+    let nulifiedMatrix1_8 = [[1, 2, 0, 4, 99, 34],
+                             [0, 0, 0, 0, 0, 0],
+                             [9, 10, 0, 12, 31, 12],
+                             [9, 10, 0, 12, 31, 12],
+                             [9, 10, 0, 12, 31, 12]]
+    
+    
     override func setUp() {
         super.setUp()
         
@@ -131,83 +186,59 @@ class ArraysAndStringsTests: XCTestCase {
     // * 1.7. Rotate Matrix
     // * Hints: 51, 100
     func test1_7_rotateMatrix3x3() {
-        let startMatrix = [["a", "b", "c"],
-                           ["d", "e", "f"],
-                           ["g", "h", "i"]]
-        
-        let rotatedMatrix = [["g", "d", "a"],
-                             ["h", "e", "b"],
-                             ["i", "f", "c"]]
-        
-        let rotatedInReal = rotateMatrix1(startMatrix)
+       
+        let rotatedInReal = rotateMatrix1(startMatrix1_7_str3x3)
         
         XCTAssertNotNil(rotatedInReal)
         
-        XCTAssertTrue(rotatedMatrix.elementsEqual(rotatedInReal!) { $0 == $1 })
+        XCTAssertTrue(rotatedMatrix1_7_str3x3.elementsEqual(rotatedInReal!) { $0 == $1 })
 
-        
-        let rotatedAgainMatrix = [["i", "h", "g"],
-                                  ["f", "e", "d"],
-                                  ["c", "b", "a"]]
         let rotatedInRealAgain = rotateMatrix1(rotatedInReal!)
         
         XCTAssertNotNil(rotatedInRealAgain)
         
-        XCTAssertTrue(rotatedAgainMatrix.elementsEqual(rotatedInRealAgain!) { $0 == $1 })
+        XCTAssertTrue(rotatedAgainMatrix1_7_3x3.elementsEqual(rotatedInRealAgain!) { $0 == $1 })
     }
     
     func test1_7_rotateMatrix5x5() {
-        let startMatrix = [["a", "b", "c", "d", "e"],
-                           ["f", "g", "h", "i", "g"],
-                           ["k", "l", "m", "n", "o"],
-                           ["p", "q", "r", "s", "t"],
-                           ["u", "v", "w", "x", "y"]]
-        
-        let rotatedMatrix = [["u", "p", "k", "f", "a"],
-                             ["v", "q", "l", "g", "b"],
-                             ["w", "r", "m", "h", "c"],
-                             ["x", "s", "n", "i", "d"],
-                             ["y", "t", "o", "g", "e"]]
-        
-        var rotatedInReal = rotateMatrix1(startMatrix)
+    
+        var rotatedInReal = rotateMatrix1(startMatrix1_7_str5x5)
         
         XCTAssertNotNil(rotatedInReal)
         
-        for index in 0 ..< rotatedMatrix.count {
-            XCTAssertEqual(rotatedMatrix[index], rotatedInReal![index])
+        for index in 0 ..< rotatedMatrix1_7_str5x5.count {
+            XCTAssertEqual(rotatedMatrix1_7_str5x5[index], rotatedInReal![index])
         }
     }
     
     func test1_7_2_rotateMatrix3x3() {
-        var startMatrix = [[1, 2, 3],
-                           [4, 5, 6],
-                           [7, 8, 9]]
+        XCTAssertTrue(rotateMatrix2(&startMatrix1_7_3x3))
         
-        let rotatedMatrix = [[7, 4, 1],
-                             [8, 5, 2],
-                             [9, 6, 3]]
-        
-        XCTAssertTrue(rotateMatrix2(&startMatrix))
-        
-        for index in 0 ..< rotatedMatrix.count {
-            XCTAssertEqual(rotatedMatrix[index], startMatrix[index])
+        for index in 0 ..< rotatedMatrix1_7_3x3.count {
+            XCTAssertEqual(rotatedMatrix1_7_3x3[index], startMatrix1_7_3x3[index])
         }
     }
     
     func test1_7_2_rotateMatrix4x4() {
-        var startMatrix = [[1, 2, 3, 4],
-                           [5, 6, 7, 8],
-                           [9, 10, 11, 12],
-                           [13, 14, 15, 16]]
+        XCTAssertTrue(rotateMatrix2(&startMatrix1_7_4x4))
         
-        let rotatedMatrix = [[13, 9, 5, 1],
-                             [14, 10, 6, 2],
-                             [15, 11, 7, 3],
-                             [16, 12, 8, 4]]
-        
-        XCTAssertTrue(rotateMatrix2(&startMatrix))
-        
-        XCTAssertTrue(startMatrix.elementsEqual(rotatedMatrix) { $0 == $1 })
+        XCTAssertTrue(startMatrix1_7_4x4.elementsEqual(rotatedMatrix1_7_4x4) { $0 == $1 })
+    }
+    
+    // * 1.8. Zero Matrix
+    // * Hints: 17, 74, 102
+    func test1_8_1_zeroMatrix() {
+    XCTAssertTrue(nulifiedMatrix1_8.elementsEqual(zeroMatrix1(startMatrix1_8)) { $0 == $1 })
+    }
+    
+    func test1_8_2_zeroMatrix() {
+        setZeroes1(&startMatrix1_8)
+        XCTAssertTrue(nulifiedMatrix1_8.elementsEqual(startMatrix1_8) { $0 == $1 })
+    }
+    
+    func test1_8_3_zeroMatrix() {
+        setZeroes2(&startMatrix1_8)
+        XCTAssertTrue(nulifiedMatrix1_8.elementsEqual(startMatrix1_8) { $0 == $1 })
     }
 }
 
