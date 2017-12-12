@@ -76,7 +76,7 @@ class LinkedList<T: Hashable> {
         }
     }
     
-    func getAllKeys() -> String {
+    func getAllKeysString() -> String {
         var outStr = ""
         
         guard let head = head else { return outStr }
@@ -167,7 +167,119 @@ class LinkedList<T: Hashable> {
         }
     }
     
+    // * 2.2. Return Kth to Last
+    // * Hints: 8, 25, 41, 67, 126
+    // Solution 1. n0an
+    func elementToLast1(kth: Int) -> T? {
+        var kth = kth
+        
+        if kth == 0 {
+            kth = 1
+        }
+        
+        guard head != nil else { return nil }
+        
+        var current = head
+        
+        var dict = [Int: T]()
+        
+        var index = 0
+                
+        while current != nil {
+            
+            dict[index] = current!.item
+            
+            index += 1
+            
+            current = current!.next
+        }
+        
+        return dict[index - kth] ?? nil
+    }
     
+    // Solution 1a. n0an. Not fully correct, return String? instead of T?
+    func elementToLast1a(kth: Int) -> String? {
+        var kth = kth
+        
+        if kth == 0 {
+            kth = 1
+        }
+        
+        guard head != nil else { return nil }
+        
+        let str = self.getAllKeysString()
+        
+        if str.count < kth { return nil }
+        
+        return String(Array(str)[str.count - kth])
+    }
+    
+    // Solution 2. CtCI. Recursive. Not returning. Printing kth element
+    static func elementToLast2(head: Node<T>?, kth: Int) -> Int {
+        guard head != nil else {
+            return 0
+        }
+
+        let index = elementToLast2(head: head!.next, kth: kth) + 1
+        
+        if index == kth {
+            print("\(kth) th to last node is \(head!.item)")
+        }
+        
+        return index
+    }
+    
+    // Solution 3. CtCI. Recursive. O(n)
+    class Index {
+        public var value = 0
+    }
+    
+    static func elementToLast3(head: Node<T>?, kth: Int) -> T? {
+        let idx = Index()
+        return elementToLast3(head, kth, idx)
+    }
+    
+    private static func elementToLast3(_ head: Node<T>?, _ kth: Int, _ idx: Index) -> T? {
+        
+        guard head != nil else { return nil }
+        
+        let nodeItem = elementToLast3(head?.next, kth, idx)
+        
+        idx.value += 1
+        
+        if idx.value == kth {
+            return head?.item
+        }
+        
+        return nodeItem
+    }
+    
+    // Solution 4. CtCI. Iterative. Two pointers. O(n) time and O(1) space
+    func elementToLast4(kth: Int) -> T? {
+        
+        guard head != nil else { return nil }
+        
+        var p1 = head
+        var p2 = head
+        
+        // Move p1 kth nodes into the list
+        for _ in 0 ..< kth {
+            
+            if p1 == nil { // Out of bounds
+                return nil
+            }
+            
+            p1 = p1!.next
+        }
+        
+        // Move them at the same pace. When p1 hits the end, p2 will be at the needed element
+        
+        while p1 != nil {
+            p1 = p1!.next
+            p2 = p2?.next
+        }
+        return p2?.item
+    }
     
 }
 
