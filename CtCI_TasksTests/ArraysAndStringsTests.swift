@@ -147,7 +147,7 @@ class ArraysAndStringsTests: XCTestCase {
     
     // * 1.5. One Away
     // * Hints: 23, 97, 130
-    func test1_5_isOneAwayEdit1() {
+    func test1_5_1_isOneAwayEdit() {
         print(greetingTask1_5)
         
         XCTAssertTrue(String.oneEditAway1(inputStr1: str151, inputStr2: str152), "No one away")
@@ -156,7 +156,7 @@ class ArraysAndStringsTests: XCTestCase {
         XCTAssertFalse(String.oneEditAway1(inputStr1: str151, inputStr2: str155), "Must be false")
     }
     
-    func test1_5_isOneAwayEdit2() {
+    func test1_5_2_isOneAwayEdit() {
         print(greetingTask1_5)
         
         XCTAssertTrue(String.oneEditAway2(first: str151, second: str152), "No one away edit")
@@ -165,7 +165,7 @@ class ArraysAndStringsTests: XCTestCase {
         XCTAssertFalse(String.oneEditAway2(first: str151, second: str155), "Must be false")
     }
     
-    func test1_5_isOneAwayEdit3() {
+    func test1_5_3_isOneAwayEdit() {
         print(greetingTask1_5)
         
         XCTAssertTrue(String.oneEditAway3(first: str151, second: str152), "No one away edit")

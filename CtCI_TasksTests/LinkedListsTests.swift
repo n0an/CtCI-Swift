@@ -12,6 +12,23 @@ import XCTest
 
 class linkedListsTests: XCTestCase {
     
+    var linkedList: LinkedList<String>!
+    
+    override func setUp() {
+        super.setUp()
+        
+        linkedList = LinkedList<String>()
+        linkedList.append(item: "A")
+        linkedList.append(item: "B")
+        linkedList.append(item: "C")
+        linkedList.append(item: "A")
+        linkedList.append(item: "B")
+        linkedList.append(item: "F")
+        linkedList.append(item: "B")
+        linkedList.append(item: "B")
+        linkedList.append(item: "A")
+    }
+    
     func testLLAppend() {
         let linkedList = LinkedList<String>()
         XCTAssertEqual(linkedList.getAllKeys(), "")
@@ -36,23 +53,29 @@ class linkedListsTests: XCTestCase {
         XCTAssertEqual(linkedList.getAllKeys(), "AC")
     }
     
-    func test2_1_removeLLDups() {
+    func test2_1_1_removeLLDups() {
 
-        let linkedList = LinkedList<String>()
-        linkedList.append(item: "A")
-        linkedList.append(item: "B")
-        linkedList.append(item: "C")
-        linkedList.append(item: "A")
-        linkedList.append(item: "B")
-        linkedList.append(item: "F")
-        linkedList.append(item: "B")
-        linkedList.append(item: "B")
-        linkedList.append(item: "A")
+        linkedList.removeDups1()
+        
+        let checkStr = "ABCF"
+        
+        XCTAssertEqual(linkedList.getAllKeys(), checkStr)
+    }
+    
+    func test2_1_2_removeLLDups() {
+        
+        linkedList.removeDups2()
         
         linkedList.printAllKeys()
-        print("-----")
         
-        linkedList.removeDups()
+        let checkStr = "ABCF"
+        
+        XCTAssertEqual(linkedList.getAllKeys(), checkStr)
+    }
+    
+    func test2_1_3_removeLLDups() {
+        
+        linkedList.removeDups3()
         
         linkedList.printAllKeys()
         

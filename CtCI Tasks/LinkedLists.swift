@@ -98,7 +98,7 @@ class LinkedList<T: Hashable> {
     // * Hints: 9, 40
     
     // Solution 1. n0an
-    func removeDups() {
+    func removeDups1() {
         
         guard var n = head else { return }
         
@@ -121,6 +121,53 @@ class LinkedList<T: Hashable> {
             n = n.next!
         }
     }
+    
+    // Solution 2. CtCI. O(N)
+    func removeDups2() {
+        guard head != nil else { return }
+        
+        var checkSet = Set<T>()
+        
+        var previous: Node<T>? = nil
+        
+        var n = head
+        
+        while n != nil {
+            
+            if checkSet.contains(n!.item) {
+                previous?.next = n!.next
+            } else {
+                checkSet.insert(n!.item)
+                previous = n
+            }
+            
+            n = n!.next
+        }
+    }
+    
+    // Solution 3. CtCI. No buffer allowed. Two pointers: current which iterates through the linked list, and runner which checks all subsequent nodes for duplicates. Runs in O(1) space, but O(N2) time.
+    func removeDups3() {
+        guard head != nil else { return }
+        
+        var current = head
+        
+        while current != nil  {
+            
+            var runner = current
+            
+            while runner!.next != nil {
+                if runner!.next!.item == current!.item {
+                    runner!.next = runner!.next!.next
+                } else {
+                    runner = runner!.next!
+                }
+            }
+            
+            current = current!.next
+        }
+    }
+    
+    
     
 }
 
