@@ -1,5 +1,5 @@
 //
-//  LinkedListsTests.swift
+//  linkedListsTests.swift
 //  CtCI_TasksTests
 //
 //  Created by nag on 12/12/2017.
@@ -10,27 +10,31 @@ import XCTest
 
 @testable import CtCI_Tasks
 
-class LinkedListsTests: XCTestCase {
+class linkedListsTests: XCTestCase {
     
     func test2_1_removeLLDups() {
-        let headNode = LinkedList<String>.Node(item: "A")
-        
-        let linkedList = LinkedList(node: headNode)
-        
-        LinkedList.append(head: linkedList.head, item: "B")
-        LinkedList.append(head: linkedList.head, item: "C")
-        LinkedList.append(head: linkedList.head, item: "A")
-        LinkedList.append(head: linkedList.head, item: "B")
-        LinkedList.append(head: linkedList.head, item: "F")
-        LinkedList.append(head: linkedList.head, item: "B")
-        LinkedList.append(head: linkedList.head, item: "B")
-        LinkedList.append(head: linkedList.head, item: "A")
 
+        let linkedList = LinkedList<String>()
+        linkedList.append(item: "A")
+        linkedList.append(item: "B")
+        linkedList.append(item: "C")
+        linkedList.append(item: "A")
+        linkedList.append(item: "B")
+        linkedList.append(item: "F")
+        linkedList.append(item: "B")
+        linkedList.append(item: "B")
+        linkedList.append(item: "A")
+        
         linkedList.printAllKeys()
+        print("-----")
         
         linkedList.removeDups()
         
         linkedList.printAllKeys()
+        
+        let checkStr = "ABCF"
+        
+        XCTAssertEqual(linkedList.getAllKeys(), checkStr)
     }
     
 }

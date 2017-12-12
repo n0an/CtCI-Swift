@@ -19,60 +19,78 @@ class LinkedList<T: Hashable> {
         }
     }
     
-    var head: Node<T>
+    var head: Node<T>?
     
-    init(node: Node<T>) {
-        self.head = node
-    }
-    
-    static func append(head: Node<T>, item: T) {
-        
-        var n = head
-        
-        while n.next != nil {
-            
-            n = n.next!
-        }
+    func append(item: T) {
         
         let newChild = Node<T>(item: item)
         
-        n.next = newChild
+        if var n = head {
+            
+            while n.next != nil {
+                
+                n = n.next!
+            }
+            
+            n.next = newChild
+            
+        } else {
+            head = newChild
+        }
+        
+        
     }
     
-    static func deleteNode(head: Node<T>, item: T) -> Node<T>? {
-        var n = head
+    func deleteNode(item: T) {
+        
+        guard var n = head else {
+            return
+        }
         
         if n.item == item {
-            return head.next
+            head = head?.next
         }
         
         while n.next != nil {
             
             if n.next!.item == item {
                 n.next = n.next!.next
-                return head
             }
             
             n = n.next!
         }
-        return head
     }
     
     //print all keys for the class
     func printAllKeys() {
         
-        print("------------------")
+        guard let head = head else { return }
         
-        print("Head item is: \(String(describing: head.item))")
-        
-        //assign the next instance
+        print("\(head.item)")
         
         var next = head.next
         
         while next != nil {
-            print("link item is: \(String(describing: next!.item))")
-            next = next?.next
+            print("\(next!.item)")
+            next = next!.next
         }
+    }
+    
+    func getAllKeys() -> String {
+        var outStr = ""
+        
+        guard let head = head else { return outStr }
+        
+        outStr += "\(head.item)"
+        
+        var next = head.next
+        
+        while next != nil {
+            outStr += "\(next!.item)"
+            next = next!.next
+        }
+        
+        return outStr
     }
     
     // === Chapter 2. Linked Lists
@@ -82,7 +100,7 @@ class LinkedList<T: Hashable> {
     // Solution 1. n0an
     func removeDups() {
         
-        var n = head
+        guard var n = head else { return }
         
         var checkSet = Set<T>()
         
