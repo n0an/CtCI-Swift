@@ -119,4 +119,45 @@ class linkedListsTests: XCTestCase {
         
     }
     
+    // * 2.3. Delete Middle Node. Given only access to that node
+    // * Hints: 72
+    func test2_3_1_deleteMiddleNode() {
+        
+        let nodeToDelete = linkedList.getNode(forItem: "C")
+        
+        _ = linkedList.deleteMiddleNode(nodeToDelete)
+        
+        XCTAssertEqual(linkedList.getAllKeysString(), "ABABFBBA")
+    }
+    
+    // * 2.4. Partition.
+    // * Hints: 3, 24
+    func test2_4_1_partition() {
+        
+        let linkedList = LinkedList<Int>()
+        linkedList.append(item: 3)
+        linkedList.append(item: 5)
+        linkedList.append(item: 8)
+        linkedList.append(item: 5)
+        linkedList.append(item: 10)
+        linkedList.append(item: 2)
+        linkedList.append(item: 1)
+        
+        let partitioningNode = linkedList.getNode(forItem: 5)
+        
+
+    }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+

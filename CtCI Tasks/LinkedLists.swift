@@ -8,7 +8,7 @@
 
 import Foundation
 
-class LinkedList<T: Hashable> {
+class LinkedList<T: Hashable> where T: Comparable {
     
     class Node<T> {
         var item: T
@@ -59,6 +59,22 @@ class LinkedList<T: Hashable> {
             
             n = n.next!
         }
+    }
+    
+    func getNode(forItem item: T) -> Node<T>? {
+        guard head != nil else { return nil }
+        
+        var n = head
+        
+        while n != nil {
+            if n!.item == item {
+                return n
+            }
+            
+            n = n!.next
+        }
+        
+        return nil
     }
     
     //print all keys for the class
@@ -281,10 +297,98 @@ class LinkedList<T: Hashable> {
         return p2?.item
     }
     
+    // * 2.3. Delete Middle Node. Given only access to that node
+    // * Hints: 72
+    // Solution 1. CtCI
+    func deleteMiddleNode(_ n: Node<T>?) -> Bool {
+        if n == nil || n!.next == nil {
+            return false
+        }
+        
+        let next = n!.next!
+        
+        n!.item = next.item
+        n!.next = next.next
+        
+        return true
+    }
+    
+    // * 2.4. Partition.
+    // * Hints: 3, 24
+    // Solution 1. CtCI
+    func partition1(node: Node<T>, x: T) -> Node<T>? {
+        var node: Node<T>? = node
+        
+        var beforeStart: Node<T>? = nil
+        var beforeEnd: Node<T>? = nil
+        var afterStart: Node<T>? = nil
+        var afterEnd: Node<T>? = nil
+
+        // Partition list
+        while node != nil {
+            let next = node!.next
+            node!.next = nil
+            
+            if node!.item < x {
+                // Insert node into end of before list
+                if beforeStart == nil {
+                    beforeStart = node
+                    beforeEnd = beforeStart
+                } else {
+                    beforeEnd?.next = node
+                    beforeEnd = node
+                }
+            } else {
+                // Insert node into end of after list
+                if afterStart == nil {
+                    afterStart = node
+                    afterEnd = afterStart
+                } else {
+                    afterEnd?.next = node
+                    afterEnd = node
+                }
+            }
+            
+            node = next
+        }
+        
+        if beforeStart == nil {
+            return afterStart
+        }
+        
+        // Merge before list and after list
+        beforeEnd?.next = afterStart
+        return beforeStart
+    }
+    
+    // Solution 2. CtCI. Optimized
+    func partition2(node: Node<T>, x: T) -> Node<T>? {
+        var head = node
+        var tail = node
+        
+        var node: Node<T>? = node
+        
+        while node != nil {
+            let next = node!.next
+            
+            if node!.item < x {
+                // Insert node at head
+                node!.next = head
+                head = node!
+            } else {
+                // Insert node at tail
+                tail.next = node
+                tail = node!
+            }
+            node = next
+        }
+        tail.next = nil
+        
+        // The head has changed, so we need to return it to the user
+        return head
+    }
+    
 }
-
-
-
 
 
 
