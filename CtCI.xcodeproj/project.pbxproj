@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		15C85CF51FDFDBF00094CED9 /* LinkedLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C85CF41FDFDBF00094CED9 /* LinkedLists.swift */; };
+		15C85CF51FDFDBF00094CED9 /* LinkedListNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C85CF41FDFDBF00094CED9 /* LinkedListNode.swift */; };
 		15C85CF71FDFE1AE0094CED9 /* LinkedListsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C85CF61FDFE1AE0094CED9 /* LinkedListsTests.swift */; };
+		15C85CF91FE13E700094CED9 /* LinkedListWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C85CF81FE13E700094CED9 /* LinkedListWrapper.swift */; };
 		182E0AF11FD464EB009B7AB7 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E0AF01FD464EB009B7AB7 /* main.swift */; };
 		185748DD1FD72EF20045CB6C /* CtCI_Tasks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185748BD1FD72E970045CB6C /* CtCI_Tasks.framework */; };
 		185748E41FD72F010045CB6C /* ArraysAndStringsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185748E31FD72F010045CB6C /* ArraysAndStringsTests.swift */; };
@@ -39,8 +40,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		15C85CF41FDFDBF00094CED9 /* LinkedLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedLists.swift; sourceTree = "<group>"; };
+		15C85CF41FDFDBF00094CED9 /* LinkedListNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedListNode.swift; sourceTree = "<group>"; };
 		15C85CF61FDFE1AE0094CED9 /* LinkedListsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedListsTests.swift; sourceTree = "<group>"; };
+		15C85CF81FE13E700094CED9 /* LinkedListWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedListWrapper.swift; sourceTree = "<group>"; };
 		182E0AED1FD464EB009B7AB7 /* CtCI */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CtCI; sourceTree = BUILT_PRODUCTS_DIR; };
 		182E0AF01FD464EB009B7AB7 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		182E0AF71FD4669C009B7AB7 /* ArraysAndStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArraysAndStrings.swift; sourceTree = "<group>"; };
@@ -109,7 +111,8 @@
 			isa = PBXGroup;
 			children = (
 				182E0AF71FD4669C009B7AB7 /* ArraysAndStrings.swift */,
-				15C85CF41FDFDBF00094CED9 /* LinkedLists.swift */,
+				15C85CF41FDFDBF00094CED9 /* LinkedListNode.swift */,
+				15C85CF81FE13E700094CED9 /* LinkedListWrapper.swift */,
 				185748C01FD72E970045CB6C /* Info.plist */,
 			);
 			path = "CtCI Tasks";
@@ -265,8 +268,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15C85CF51FDFDBF00094CED9 /* LinkedLists.swift in Sources */,
+				15C85CF51FDFDBF00094CED9 /* LinkedListNode.swift in Sources */,
 				185748E51FD72F630045CB6C /* ArraysAndStrings.swift in Sources */,
+				15C85CF91FE13E700094CED9 /* LinkedListWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
