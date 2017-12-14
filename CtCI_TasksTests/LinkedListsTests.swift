@@ -16,8 +16,6 @@ class linkedListsTests: XCTestCase {
     // ====== Chapter 2. Linked Lists ======
     // =====================================
     
-//    var linkedList: LinkedList<String>!
-    
     var linkedListNode: Node<String>!
     
     override func setUp() {
@@ -224,6 +222,18 @@ class linkedListsTests: XCTestCase {
         XCTAssertEqual(llSum?.getAllKeysString(head: llSum), "912")
     }
 
+    // * 2.6. Palindrome
+    // * Hints: 5, 13, 29, 61, 101
+    func test2_6_1_palindrome() {
+        let l1 = Node<String>(item: "A")
+        l1.appendToTail(item: "Bd")
+        l1.appendToTail(item: "C")
+        l1.appendToTail(item: "Bd")
+        l1.appendToTail(item: "A")
+        
+        XCTAssertTrue(l1.isPalindrome1(l1))
+        XCTAssertFalse(linkedListNode.isPalindrome1(linkedListNode))
+    }
     
 }
 

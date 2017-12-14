@@ -128,6 +128,22 @@ class Node<T: Hashable> where T: Comparable {
     
 }
 
+extension Node: Equatable {
+    static func ==(lhs: Node<T>, rhs: Node<T>) -> Bool {
+        var one: Node<T>? = lhs
+        var two: Node<T>? = rhs
+        
+        while one != nil && two != nil {
+            if one!.item! != two!.item! {
+                return false
+            }
+            one = one!.next
+            two = two!.next
+        }
+        return one == nil && two == nil
+    }
+}
+
 // === Chapter 2. Linked Lists
 
 extension Node {
@@ -569,7 +585,47 @@ extension Node {
         return node
     }
     
+    // * 2.6. Palindrome
+    // * Hints: 5, 13, 29, 61, 101
+    // Solution 1. CtCI
+    func isPalindrome1(_ head: Node<T>?) -> Bool {
+        let reversed = reverseAndClone(head)
+//        return isEqual(head, reversed)
+        return head == reversed
+    }
+    
+    func reverseAndClone(_ node: Node<T>?) -> Node<T>? {
+        var node = node
+        
+        var head: Node<T>? = nil
+        
+        while node != nil {
+            let n = Node(item: node!.item!) // Clone
+            n.next = head
+            head = n
+            node = node!.next
+        }
+        return head
+    }
+    
+//    func isEqual(_ one: Node<T>?, _ two: Node<T>?) -> Bool {
+//        var one = one
+//        var two = two
+//
+//        while one != nil && two != nil {
+//            if one!.item! != two!.item! {
+//                return false
+//            }
+//            one = one!.next
+//            two = two!.next
+//        }
+//        return one == nil && two == nil
+//    }
+    
+    
 }
+
+
 
 
 
