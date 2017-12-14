@@ -135,7 +135,6 @@ class linkedListsTests: XCTestCase {
     // * 2.4. Partition.
     // * Hints: 3, 24
     func test2_4_1_partition() {
-
         let linkedListNode = Node<Int>(item: 3)
         linkedListNode.appendToTail(item: 5)
         linkedListNode.appendToTail(item: 8)
@@ -152,7 +151,6 @@ class linkedListsTests: XCTestCase {
     }
     
     func test2_4_2_partition() {
-        
         let linkedListNode = Node<Int>(item: 3)
         linkedListNode.appendToTail(item: 5)
         linkedListNode.appendToTail(item: 8)
@@ -166,8 +164,66 @@ class linkedListsTests: XCTestCase {
         partitionedNode?.printAllKeys(head: partitionedNode)
         
         XCTAssertEqual(partitionedNode?.getAllKeysString(head: partitionedNode), "12358510")
-        
     }
+    
+    // * 2.5. Sum Lists.
+    // * Hints: 7, 30, 71, 95, 109
+    func test2_5_1a_sumList() {
+        let linkedListNode1 = Node<Int>(item: 7)
+        linkedListNode1.appendToTail(item: 1)
+        linkedListNode1.appendToTail(item: 6)
+        
+        let linkedListNode2 = Node<Int>(item: 5)
+        linkedListNode2.appendToTail(item: 9)
+        linkedListNode2.appendToTail(item: 2)
+        
+        let llSum = Node<Int>.sumList1a(node1: linkedListNode1, node2: linkedListNode2)
+        
+        XCTAssertEqual(llSum?.getAllKeysString(head: llSum), "219")
+    }
+    
+    func test2_5_1b_sumList() {
+        let linkedListNode1 = Node<Int>(item: 6)
+        linkedListNode1.appendToTail(item: 1)
+        linkedListNode1.appendToTail(item: 7)
+        
+        let linkedListNode2 = Node<Int>(item: 2)
+        linkedListNode2.appendToTail(item: 9)
+        linkedListNode2.appendToTail(item: 5)
+        
+        let llSum = Node<Int>.sumList1b(node1: linkedListNode1, node2: linkedListNode2)
+        
+        XCTAssertEqual(llSum?.getAllKeysString(head: llSum), "912")
+    }
+    
+    func test2_5_2_sumList() {
+        let linkedListNode1 = Node<Int>(item: 7)
+        linkedListNode1.appendToTail(item: 1)
+        linkedListNode1.appendToTail(item: 6)
+        
+        let linkedListNode2 = Node<Int>(item: 5)
+        linkedListNode2.appendToTail(item: 9)
+        linkedListNode2.appendToTail(item: 2)
+        
+        let llSum = linkedListNode1.addLists2a(l1: linkedListNode1, l2: linkedListNode2, carry: 0)
+        
+        XCTAssertEqual(llSum?.getAllKeysString(head: llSum), "219")
+    }
+    
+    func test2_5_2b_sumList() {
+        let linkedListNode1 = Node<Int>(item: 6)
+        linkedListNode1.appendToTail(item: 1)
+        linkedListNode1.appendToTail(item: 7)
+        
+        let linkedListNode2 = Node<Int>(item: 2)
+        linkedListNode2.appendToTail(item: 9)
+        linkedListNode2.appendToTail(item: 5)
+        
+        let llSum = linkedListNode1.addLists2b(l1: linkedListNode1, l2: linkedListNode2, carry: 0)
+
+        XCTAssertEqual(llSum?.getAllKeysString(head: llSum), "912")
+    }
+
     
 }
 

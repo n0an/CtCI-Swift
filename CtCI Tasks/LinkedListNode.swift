@@ -10,12 +10,29 @@ import Foundation
 
 // === Main Node implementation
 class Node<T: Hashable> where T: Comparable {
-    var item: T
+    var item: T?
     var next: Node?
     
     init(item: T) {
         self.item = item
     }
+    
+    init() {
+        
+    }
+    
+    var count: Int {
+        var n = self.next
+        var i = 1
+        
+        while n != nil {
+            i += 1
+            n = n!.next
+        }
+        
+        return i
+    }
+    
     
     func appendToTail(item: T) {
         
@@ -82,12 +99,12 @@ class Node<T: Hashable> where T: Comparable {
         
         guard let head = head else { return }
         
-        print("\(head.item)")
+        print("\(head.item!)")
         
         var next = head.next
         
         while next != nil {
-            print("\(next!.item)")
+            print("\(next!.item!)")
             next = next!.next
         }
     }
@@ -97,12 +114,12 @@ class Node<T: Hashable> where T: Comparable {
         
         guard let head = head else { return outStr }
         
-        outStr += "\(head.item)"
+        outStr += "\(head.item!)"
         
         var next = head.next
         
         while next != nil {
-            outStr += "\(next!.item)"
+            outStr += "\(next!.item!)"
             next = next!.next
         }
         
@@ -130,10 +147,10 @@ extension Node {
         
         while n != nil {
             
-            if checkSet.contains(n!.item) {
+            if checkSet.contains(n!.item!) {
                 previous?.next = n!.next
             } else {
-                checkSet.insert(n!.item)
+                checkSet.insert(n!.item!)
                 previous = n
             }
             
@@ -293,7 +310,7 @@ extension Node {
             let next = node!.next
             node!.next = nil
             
-            if node!.item < x {
+            if node!.item! < x {
                 // Insert node into end of before list
                 if beforeStart == nil {
                     beforeStart = node
@@ -335,7 +352,7 @@ extension Node {
         while node != nil {
             let next = node!.next
             
-            if node!.item < x {
+            if node!.item! < x {
                 // Insert node at head
                 node!.next = head
                 head = node!
@@ -351,7 +368,211 @@ extension Node {
         // The head has changed, so we need to return it to the user
         return head
     }
+    
+    // * 2.5. Sum Lists.
+    // * Hints: 7, 30, 71, 95, 109
+    // Solution 1. n0an. Task 1 (Reversed order)
+    static func sumList1a(node1: Node<Int>?, node2: Node<Int>?) -> Node<Int>? {
+        
+        guard node1 != nil && node2 != nil else { return nil }
+        
+        var num1: Int? = 0
+        var num2: Int? = 0
+        
+        var str1 = ""
+        var str2 = ""
+        
+        var n1 = node1
+        var n2 = node2
+        
+        while n1 != nil {
+            str1 += "\(n1!.item!)"
+            n1 = n1!.next
+        }
+        
+        while n2 != nil {
+            str2 += "\(n2!.item!)"
+            n2 = n2!.next
+        }
+        
+        num1 = Int(String(str1.reversed()))
+        num2 = Int(String(str2.reversed()))
+        
+        guard let num1u = num1, let num2u = num2 else { return nil }
+        
+        let sum = num1u + num2u
+        
+        let sumStr = String(sum).reversed()
+        
+        guard let firstDigit = Int(String(Array(sumStr)[0])) else { return nil }
+        
+        let outNode = Node<Int>.init(item: firstDigit)
+        
+        for index in 1 ..< sumStr.count {
+            guard let digit = Int(String(Array(sumStr)[index])) else { return nil }
+            
+            outNode.appendToTail(item: digit)
+        }
+        
+        return outNode
+    }
+    
+    // Solution 1. n0an. Task 2 (Straight order)
+    static func sumList1b(node1: Node<Int>?, node2: Node<Int>?) -> Node<Int>? {
+        
+        guard node1 != nil && node2 != nil else { return nil }
+        
+        var num1: Int? = 0
+        var num2: Int? = 0
+        
+        var str1 = ""
+        var str2 = ""
+        
+        var n1 = node1
+        var n2 = node2
+        
+        while n1 != nil {
+            str1 += "\(n1!.item!)"
+            n1 = n1!.next
+        }
+        
+        while n2 != nil {
+            str2 += "\(n2!.item!)"
+            n2 = n2!.next
+        }
+        
+        num1 = Int(str1)
+        num2 = Int(str2)
+        
+        guard let num1u = num1, let num2u = num2 else { return nil }
+        
+        let sum = num1u + num2u
+        
+        let sumStr = String(sum)
+        
+        guard let firstDigit = Int(String(Array(sumStr)[0])) else { return nil }
+        
+        let outNode = Node<Int>.init(item: firstDigit)
+        
+        for index in 1 ..< sumStr.count {
+            guard let digit = Int(String(Array(sumStr)[index])) else { return nil }
+            
+            outNode.appendToTail(item: digit)
+        }
+        
+        return outNode
+    }
+    
+    // Solution 2. CtCI. Task 1 (Reversed order)
+    func addLists2a(l1: Node<Int>?, l2: Node<Int>?, carry: Int) -> Node<Int>? {
+        if l1 == nil && l2 == nil && carry == 0 {
+            return nil
+        }
+        
+        let result = Node<Int>()
+        
+        var value = carry
+        
+        if l1 != nil {
+            value += l1!.item!
+        }
+        
+        if l2 != nil {
+            value += l2!.item!
+        }
+        
+        // Second digit of number
+        result.item = value % 10
+        
+        // Recursive
+        if l1 != nil || l2 != nil {
+            let more = addLists2a(l1: l1?.next ?? nil, l2: l2?.next ?? nil, carry: value >= 10 ? 1 : 0)
+            
+            if let more = more { result.appendNodeToTail(node: more) }
+        }
+        
+        return result
+    }
+    
+    // Solution 2. CtCI. Task 2 (Straight order)
+    class PartialSum {
+        public var sum: Node<Int>? = nil
+        public var carry = 0
+    }
+    
+    func addLists2b(l1: Node<Int>?, l2: Node<Int>?, carry: Int) -> Node<Int>? {
+        
+        guard var l1 = l1, var l2 = l2 else { return nil }
+        
+        let len1 = l1.count
+        let len2 = l2.count
+        
+        // Pad the shorter list with zeros
+        if len1 < len2 {
+            l1 = padList(l1, len2 - len1)
+        } else {
+            l2 = padList(l2, len1 - len2)
+        }
+        
+        // Add lists
+        let sum = addListsHelper(l1, l2)
+        
+        // If there was a carry value left over, insert this at the front of the list. Otherwise, just return the linked list
+        
+        if sum.carry == 0 {
+            return sum.sum
+        } else {
+            let result = insertBefore(sum.sum, sum.carry)
+            return result
+        }
+    }
+    
+    func addListsHelper(_ l1: Node<Int>?, _ l2: Node<Int>?) -> PartialSum {
+        if l1 == nil && l2 == nil {
+            let sum = PartialSum()
+            return sum
+        }
+        
+        // Add smaller digits recursively
+        let sum = addListsHelper(l1?.next, l2?.next)
+        
+        // Add carry to current data
+        let val = sum.carry + (l1?.item)! + (l2?.item)!
+        
+        // Insert sum of current digits
+        let full_result = insertBefore(sum.sum, val % 10)
+        
+        // Return sum so far, and the carry value
+        sum.sum = full_result
+        sum.carry = val / 10
+        return sum
+    }
+    
+    func padList(_ l: Node<Int>, _ padding: Int) -> Node<Int> {
+        var head = l
+        
+        for _ in 0 ..< padding {
+            head = insertBefore(head, 0)
+        }
+        
+        return head
+    }
+    
+    func insertBefore(_ list: Node<Int>?, _ item: Int) -> Node<Int> {
+        
+        let node = Node<Int>(item: item)
+        
+        if list != nil {
+            node.next = list
+        }
+        
+        return node
+    }
+    
 }
+
+
+
 
 
 
