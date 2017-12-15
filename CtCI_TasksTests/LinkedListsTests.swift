@@ -301,10 +301,29 @@ class linkedListsTests: XCTestCase {
         
         XCTAssertNotNil(intersectionl1l2)
         XCTAssertEqual(intersectionl1l2!.item!, 7)
-        
     }
     
-    
+    // * 2.8. Loop Detectioin
+    // * Hints: 50, 69, 83, 90
+    func test2_8_1_loopDetection() {
+        
+        let linkNode = Node<String>(item: "A")
+        linkNode.appendToTail(item: "B")
+        linkNode.appendToTail(item: "C")
+        linkNode.appendToTail(item: "D")
+        linkNode.appendToTail(item: "E")
+        
+        let endNode = linkNode.getNode(head: linkNode, forItem: "E")
+        let beginningOfLoop = linkNode.getNode(head: linkNode, forItem: "C")
+        
+        endNode!.next = beginningOfLoop
+        
+        let detectedLoopNode = linkNode.loopDetection(linkNode)
+        
+        XCTAssertNotNil(detectedLoopNode)
+        
+        XCTAssertEqual(detectedLoopNode?.item, "C")
+    }
 }
 
 

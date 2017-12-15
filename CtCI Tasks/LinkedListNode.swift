@@ -793,13 +793,43 @@ extension Node {
         }
         return current
     }
+    
+    // * 2.8. Loop Detection
+    // * Hints: 50, 69, 83, 90
+    // Solution 1. n0an
+    func loopDetection(_ head: Node<T>?) -> Node<T>? {
+        
+        guard head != nil else { return nil }
+        
+        var slow = head
+        var fast = head
+        
+        // Find meeting point. This will be LOOP_SIZE - k steps into the linked list.
+        mainLoop: while fast != nil && fast!.next != nil {
+            slow = slow!.next
+            fast = fast!.next!.next
+            
+            if slow === fast { // Collision detected
+                break mainLoop
+            }
+        }
+        
+        // Error check - no meeting point, no loop
+        if fast == nil || fast!.next == nil {
+            return nil
+        }
+        
+        // Move slow pointer to Head. Keep fast at Meeting Point. Each are k steps from the Loop Start. If they move at the same pace, they must meet at Loop Start.
+        slow = head
+        
+        while slow !== fast {
+            slow = slow?.next
+            fast = fast?.next
+        }
+        
+        // Both now point to the start of the loop
+        return fast
+    }
 }
-
-
-
-
-
-
-
 
 
