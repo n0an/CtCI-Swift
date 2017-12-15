@@ -18,6 +18,9 @@ class linkedListsTests: XCTestCase {
     
     var linkedListNode: Node<String>!
     
+    var palindromeListNode: Node<String>!
+    
+    
     override func setUp() {
         super.setUp()
         
@@ -30,6 +33,12 @@ class linkedListsTests: XCTestCase {
         linkedListNode.appendToTail(item: "B")
         linkedListNode.appendToTail(item: "B")
         linkedListNode.appendToTail(item: "A")
+        
+        palindromeListNode = Node<String>(item: "A")
+        palindromeListNode.appendToTail(item: "Bd")
+        palindromeListNode.appendToTail(item: "C")
+        palindromeListNode.appendToTail(item: "Bd")
+        palindromeListNode.appendToTail(item: "A")
     }
     
     func testLLAppend() {
@@ -225,14 +234,21 @@ class linkedListsTests: XCTestCase {
     // * 2.6. Palindrome
     // * Hints: 5, 13, 29, 61, 101
     func test2_6_1_palindrome() {
-        let l1 = Node<String>(item: "A")
-        l1.appendToTail(item: "Bd")
-        l1.appendToTail(item: "C")
-        l1.appendToTail(item: "Bd")
-        l1.appendToTail(item: "A")
         
-        XCTAssertTrue(l1.isPalindrome1(l1))
+        XCTAssertTrue(palindromeListNode.isPalindrome1(palindromeListNode))
         XCTAssertFalse(linkedListNode.isPalindrome1(linkedListNode))
+    }
+    
+    func test2_6_2_palindrome() {
+        
+        XCTAssertTrue(palindromeListNode.isPalindrome2(palindromeListNode))
+        XCTAssertFalse(linkedListNode.isPalindrome2(linkedListNode))
+    }
+    
+    func test2_6_3_palindrome() {
+        
+        XCTAssertTrue(palindromeListNode.isPalindrome3(palindromeListNode))
+        XCTAssertFalse(linkedListNode.isPalindrome3(linkedListNode))
     }
     
 }

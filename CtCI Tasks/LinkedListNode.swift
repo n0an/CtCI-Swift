@@ -608,6 +608,94 @@ extension Node {
         return head
     }
     
+    // Solution 2. CtCI
+    func isPalindrome2(_ head: Node<T>?) -> Bool {
+        
+        var fast = head
+        var slow = head
+        
+        let stack = Stack<T>()
+        
+        while fast != nil && fast!.next != nil {
+            stack.push(slow!.item!)
+            slow = slow!.next
+            fast = fast?.next?.next
+        }
+        
+        // Odd number of elements, skip middle element
+        if fast != nil {
+            slow = slow!.next
+        }
+        
+        while slow != nil {
+            let top = stack.pop()
+            
+            // If values are different then it's not a palindrome
+            if top! != slow!.item! {
+                return false
+            }
+            
+            slow = slow?.next
+        }
+        
+        return true
+    }
+    
+    
+    // Solution 3. CtCI. Recursive
+    struct Result {
+        public var node: Node<T>?
+        public var result: Bool?
+        
+    }
+    
+    func isPalindrome3(_ head: Node<T>?) -> Bool {
+        guard head != nil else {
+            return false
+        }
+        
+        let length = head!.count
+        
+        let p = isPalindromeRecurse(head!, length)
+        return p.result!
+        
+    }
+    
+    func isPalindromeRecurse(_ head: Node<T>?, _ length: Int) -> Result {
+        if head == nil || length <= 0 { // Even number of nodes
+            return Result(node: head, result: true)
+        } else if length == 1 { // Odd number of nodes
+            return Result(node: head!.next, result: true)
+        }
+        
+        // Recurse on sublist
+        var res = isPalindromeRecurse(head!.next, length - 2)
+        
+        // If child calls are not a palindrome, pass back up a failure
+        if !res.result! || res.node == nil {
+            return res
+        }
+        
+        // Check if matches corresponding node on other side
+        res.result = head!.item! == res.node!.item!
+        
+        // Return corresponding node
+        res.node = res.node!.next
+        
+        return res
+    }
+    
+//    func lengthOfList(_ n: Node<T>?) {
+//        var n = n
+//        var size = 0
+//
+//        while n != nil {
+//            size += 1
+//            n = n!.next
+//        }
+//        return size
+//    }
+    
 //    func isEqual(_ one: Node<T>?, _ two: Node<T>?) -> Bool {
 //        var one = one
 //        var two = two
