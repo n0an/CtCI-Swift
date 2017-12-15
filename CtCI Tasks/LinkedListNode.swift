@@ -641,9 +641,8 @@ extension Node {
         return true
     }
     
-    
     // Solution 3. CtCI. Recursive
-    struct Result {
+    struct ResultPalindrome {
         public var node: Node<T>?
         public var result: Bool?
         
@@ -661,11 +660,11 @@ extension Node {
         
     }
     
-    func isPalindromeRecurse(_ head: Node<T>?, _ length: Int) -> Result {
+    func isPalindromeRecurse(_ head: Node<T>?, _ length: Int) -> ResultPalindrome {
         if head == nil || length <= 0 { // Even number of nodes
-            return Result(node: head, result: true)
+            return ResultPalindrome(node: head, result: true)
         } else if length == 1 { // Odd number of nodes
-            return Result(node: head!.next, result: true)
+            return ResultPalindrome(node: head!.next, result: true)
         }
         
         // Recurse on sublist
@@ -710,7 +709,90 @@ extension Node {
 //        return one == nil && two == nil
 //    }
     
+    // * 2.7. Intersection
+    // * Hints: 20, 45, 55, 65, 76, 93, 111, 120, 129
+    // Solution 1. n0an. O(n²)
+    func getIntersection1(l1: Node<T>, l2: Node<T>) -> Node<T>? {
+        
+        var headL1: Node<T>? = l1
+        
+        while headL1 != nil {
+            
+            var headL2: Node<T>? = l2
+            
+            while headL2 != nil {
+                
+                if headL2 === headL1 {
+                    return headL2
+                }
+                
+                headL2 = headL2!.next
+            }
+            headL1 = headL1!.next
+        }
+        
+        return nil
+    }
     
+    // Solution 2. CtCI. O(A + B)
+    func getIntersection2(list1: Node<T>?, list2: Node<T>?) -> Node<T>? {
+        guard list1 != nil && list2 != nil else { return nil }
+        
+        // Get tail and sizes
+        guard let result1 = getTailAndSize(list: list1) else { return nil }
+        guard let result2 = getTailAndSize(list: list2) else { return nil }
+
+        // If different tails - no intersection
+        if result1.tail != result2.tail {
+            return nil
+        }
+        
+        // Set pointers to the start of eatch linked list
+        var shorter = result1.size! < result2.size! ? list1 : list2
+        var longer = result1.size! < result2.size! ? list2 : list1
+        
+        // Advance the pointer for the longer linked list by diff in lengths
+        longer = getKthNode(longer, abs(result1.size! - result2.size!))
+        
+        // Move both pointers until you have a collision
+        while shorter != longer {
+            shorter = shorter!.next
+            longer = longer!.next
+        }
+        
+        // Return either one
+        return longer
+    }
+    
+    struct ResultIntersection {
+        var tail: Node<T>?
+        var size: Int?
+    }
+    
+    func getTailAndSize(list: Node<T>?) -> ResultIntersection? {
+        if list == nil { return nil }
+        
+        var size = 1
+        var current = list
+        
+        while current != nil {
+            size += 1
+            current = current!.next
+        }
+        
+        return ResultIntersection(tail: current, size: size)
+    }
+    
+    func getKthNode(_ head: Node<T>?, _ k: Int) -> Node<T>? {
+        var current = head
+        var k = k
+        
+        while k > 0 && current != nil {
+            current = current!.next
+            k -= 1
+        }
+        return current
+    }
 }
 
 

@@ -251,6 +251,60 @@ class linkedListsTests: XCTestCase {
         XCTAssertFalse(linkedListNode.isPalindrome3(linkedListNode))
     }
     
+    // * 2.7. Intersection
+    // * Hints: 20, 45, 55, 65, 76, 93, 111, 120, 129
+    func test2_7_1_intersection() {
+        
+        let l1 = Node<Int>(item: 3)
+        l1.appendToTail(item: 1)
+        l1.appendToTail(item: 5)
+        l1.appendToTail(item: 9)
+        l1.appendToTail(item: 7)
+        l1.appendToTail(item: 2)
+        l1.appendToTail(item: 1)
+
+        let l2 = Node<Int>(item: 4)
+        l2.appendToTail(item: 6)
+        l2.appendNodeToTail(node: l1.getNode(head: l1, forItem: 7)!)
+        
+        let intersectionl1l2 = l1.getIntersection1(l1: l1, l2: l2)
+        
+        XCTAssertNotNil(intersectionl1l2)
+        XCTAssertEqual(intersectionl1l2!.item!, 7)
+        
+        let l3 = Node<Int>(item: 4)
+        l3.appendToTail(item: 6)
+        l3.appendToTail(item: 7)
+        l3.appendToTail(item: 2)
+        l3.appendToTail(item: 1)
+        
+        let intersectionl1l3 = l1.getIntersection1(l1: l1, l2: l3)
+        
+        XCTAssertNil(intersectionl1l3)
+    }
+    
+    func test2_7_2_intersection() {
+        
+        let l1 = Node<Int>(item: 3)
+        l1.appendToTail(item: 1)
+        l1.appendToTail(item: 5)
+        l1.appendToTail(item: 9)
+        l1.appendToTail(item: 7)
+        l1.appendToTail(item: 2)
+        l1.appendToTail(item: 1)
+        
+        let l2 = Node<Int>(item: 4)
+        l2.appendToTail(item: 6)
+        l2.appendNodeToTail(node: l1.getNode(head: l1, forItem: 7)!)
+        
+        let intersectionl1l2 = l1.getIntersection2(list1: l1, list2: l2)
+        
+        XCTAssertNotNil(intersectionl1l2)
+        XCTAssertEqual(intersectionl1l2!.item!, 7)
+        
+    }
+    
+    
 }
 
 
