@@ -119,18 +119,16 @@ class MyQueue<T> {
 // * Hints: 2, 12, 38, 58
 class FixedMultiStack {
     private let numberOfStacks = 3
-    private var stackCapacity: Int?
-    private var values: [Int]?
-    private var sizes: [Int]?
+    private var stackCapacity: Int
+    private var values: [Int]
+    private var sizes: [Int]
     
     init(stackSize: Int) {
         self.stackCapacity = stackSize
         
-        self.values = [Int]()
-        self.values?.reserveCapacity(stackSize * numberOfStacks)
+        self.values = [Int].init(repeating: 0, count: stackSize * numberOfStacks)
         
-        self.sizes = [Int]()
-        self.sizes?.reserveCapacity(numberOfStacks)
+        self.sizes = [Int].init(repeating: 0, count: numberOfStacks)
     }
     
     // Push value onto stack
@@ -141,8 +139,8 @@ class FixedMultiStack {
         }
         
         // Increment stack pointer and then update top value
-        sizes![stackNum] += 1
-        values![indexOfTop(stackNum: stackNum)] = value
+        sizes[stackNum] += 1
+        values[indexOfTop(stackNum: stackNum)] = value
     }
     
     // Pop item from top stack
@@ -152,9 +150,9 @@ class FixedMultiStack {
         }
         
         let topIndex = indexOfTop(stackNum: stackNum)
-        let value = values![topIndex] // Get top
-        values![topIndex] = 0 // Clear
-        sizes![stackNum] -= 1 // Shrink
+        let value = values[topIndex] // Get top
+        values[topIndex] = 0 // Clear
+        sizes[stackNum] -= 1 // Shrink
         return value
     }
     
@@ -162,23 +160,23 @@ class FixedMultiStack {
     public func peek(stackNum: Int) -> Int? {
         if isEmpty(stackNum: stackNum) { return nil }
         
-        return values![indexOfTop(stackNum: stackNum)]
+        return values[indexOfTop(stackNum: stackNum)]
     }
     
     // Return if stack is empty
     public func isEmpty(stackNum: Int) -> Bool {
-        return sizes![stackNum] == 0
+        return sizes[stackNum] == 0
     }
     
     // Return if stack is full
     public func isFull(stackNum: Int) -> Bool {
-        return sizes![stackNum] == stackCapacity
+        return sizes[stackNum] == stackCapacity
     }
     
     // Returns index of the top of the stack
     private func indexOfTop(stackNum: Int) -> Int {
-        let offset = stackNum * stackCapacity!
-        let size = sizes![stackNum]
+        let offset = stackNum * stackCapacity
+        let size = sizes[stackNum]
         return offset + size - 1
     }
     

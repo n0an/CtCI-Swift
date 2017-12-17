@@ -9,6 +9,8 @@
 import Foundation
 import XCTest
 
+@testable import CtCI_Tasks
+
 class StackAndQueues: XCTestCase {
     
     // =====================================
@@ -23,6 +25,22 @@ class StackAndQueues: XCTestCase {
     // * Hints: 2, 12, 38, 58
     func test3_1_threeInOne () {
         
+        let multiStack = FixedMultiStack(stackSize: 3)
+        
+        multiStack.push(stackNum: 0, value: 1)
+        multiStack.push(stackNum: 0, value: 2)
+        multiStack.push(stackNum: 0, value: 3)
+        
+        multiStack.push(stackNum: 1, value: 11)
+        multiStack.push(stackNum: 1, value: 12)
+        multiStack.push(stackNum: 1, value: 13)
+        
+        multiStack.push(stackNum: 2, value: 21)
+        
+        XCTAssertEqual(multiStack.peek(stackNum: 1), 13)
+        
+        XCTAssertEqual(multiStack.pop(stackNum: 0), 3)
+
     }
     
     
