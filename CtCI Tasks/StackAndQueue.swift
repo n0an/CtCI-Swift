@@ -179,9 +179,49 @@ class FixedMultiStack {
         let size = sizes[stackNum]
         return offset + size - 1
     }
-    
-    
+   
 }
+
+
+// * 3.2. Stack Min
+// Hints: 27, 59, 78
+class StackWithMin<T>: MyStack<T> where T: Comparable {
+    var s2: MyStack<T>
+    
+    override init() {
+        s2 = MyStack<T>()
+    }
+    
+    override func push(item: T) {
+        
+        if s2.isEmpty() {
+            s2.push(item: item)
+        } else if let min = min(), item < min {
+            s2.push(item: item)
+        }
+        
+        super.push(item: item)
+    }
+    
+    override func pop() -> T? {
+        guard let value = super.pop() else { return nil }
+        
+        if let min = min(), value == min {
+            _ = s2.pop()
+        }
+        
+        return value
+    }
+    
+    func min() -> T? {
+        if s2.isEmpty() {
+            return nil
+        } else {
+            return s2.peek()
+        }
+    }
+}
+
 
 
 

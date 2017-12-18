@@ -43,5 +43,22 @@ class StackAndQueues: XCTestCase {
 
     }
     
+    // * 3.2. Stack Min
+    // Hints: 27, 59, 78
+    func test3_2_stackMin() {
+        let stack = StackWithMin<Int>()
+        stack.push(item: 7)
+        stack.push(item: 10)
+        stack.push(item: 14)
+        stack.push(item: 2)
+        stack.push(item: 62)
+
+        XCTAssertEqual(stack.min(), 2)
+        
+        _ = stack.pop()
+        _ = stack.pop()
+        
+        XCTAssertEqual(stack.min(), 7)
+    }
     
 }
