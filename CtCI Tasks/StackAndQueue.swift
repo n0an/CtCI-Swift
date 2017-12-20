@@ -222,6 +222,79 @@ class StackWithMin<T>: MyStack<T> where T: Comparable {
     }
 }
 
+// * 3.4. Queue via Stacks
+// Hints: 98, 114
+// Solution 1. n0an
+class MyQueueWithStacks<T> {
+    
+    var mainStack: MyStack<T>
+    var tempStack: MyStack<T>
+    
+    init() {
+        mainStack = MyStack<T>()
+        tempStack = MyStack<T>()
+    }
+
+    
+    func enqueue(item: T) {
+        mainStack.push(item: item)
+    }
+    
+    func dequeue() -> T? {
+        
+        guard !mainStack.isEmpty() else { return nil }
+       
+        transfer(fromStack: mainStack, toStack: tempStack)
+        
+        let lastElem = tempStack.pop()
+        
+        transfer(fromStack: tempStack, toStack: mainStack)
+
+        return lastElem
+    }
+    
+    func transfer<T>(fromStack stack1: MyStack<T>, toStack stack2: MyStack<T>) {
+        while !stack1.isEmpty() {
+            stack2.push(item: stack1.pop()!)
+        }
+    }
+}
+
+// Solution 2. CtCI. Optimized.
+class MyQueueWithStacks2<T> {
+    
+    var stackNewest: MyStack<T>
+    var stackOldest: MyStack<T>
+    
+    init() {
+        stackNewest = MyStack<T>()
+        stackOldest = MyStack<T>()
+    }
+    
+    func enqueue(item: T) {
+        stackNewest.push(item: item)
+    }
+    
+    private func shiftStacks() {
+        if stackOldest.isEmpty() {
+            while !stackNewest.isEmpty() {
+                stackOldest.push(item: stackNewest.pop()!)
+            }
+        }
+    }
+    
+    func peek() -> T? {
+        shiftStacks()
+        return stackOldest.peek()
+    }
+    
+    func dequeue() -> T? {
+        shiftStacks()
+        return stackOldest.pop()
+    }
+
+}
+
 
 
 

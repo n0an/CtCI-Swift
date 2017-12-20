@@ -61,4 +61,47 @@ class StackAndQueues: XCTestCase {
         XCTAssertEqual(stack.min(), 7)
     }
     
+    // * 3.4. Queue via Stacks
+    // Hints: 98, 114
+    func test3_4_1_queue() {
+        
+        let queueWithStacks = MyQueueWithStacks<Int>()
+        queueWithStacks.enqueue(item: 7)
+        queueWithStacks.enqueue(item: 10)
+        queueWithStacks.enqueue(item: 14)
+        queueWithStacks.enqueue(item: 2)
+        queueWithStacks.enqueue(item: 62)
+        
+        XCTAssertEqual(queueWithStacks.dequeue(), 7)
+        XCTAssertEqual(queueWithStacks.dequeue(), 10)
+
+    }
+    
+    func test3_4_2_queue() {
+        
+        let queueWithStacks = MyQueueWithStacks2<Int>()
+        queueWithStacks.enqueue(item: 7)
+        queueWithStacks.enqueue(item: 10)
+        queueWithStacks.enqueue(item: 14)
+        queueWithStacks.enqueue(item: 2)
+        queueWithStacks.enqueue(item: 62)
+        
+        XCTAssertEqual(queueWithStacks.dequeue(), 7)
+        XCTAssertEqual(queueWithStacks.dequeue(), 10)
+        
+    }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
