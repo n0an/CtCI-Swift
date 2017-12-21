@@ -24,7 +24,7 @@ class Stack<T: Hashable> where T: Comparable {
     }
 }
 
-class MyStack<T> {
+class MyStack<T: Comparable & Equatable > {
     
     private class StackNode<T> {
         var data: T
@@ -225,7 +225,7 @@ class StackWithMin<T>: MyStack<T> where T: Comparable {
 // * 3.4. Queue via Stacks
 // Hints: 98, 114
 // Solution 1. n0an
-class MyQueueWithStacks<T> {
+class MyQueueWithStacks<T: Comparable & Equatable> {
     
     var mainStack: MyStack<T>
     var tempStack: MyStack<T>
@@ -261,7 +261,7 @@ class MyQueueWithStacks<T> {
 }
 
 // Solution 2. CtCI. Optimized.
-class MyQueueWithStacks2<T> {
+class MyQueueWithStacks2<T: Comparable & Equatable> {
     
     var stackNewest: MyStack<T>
     var stackOldest: MyStack<T>
@@ -292,8 +292,39 @@ class MyQueueWithStacks2<T> {
         shiftStacks()
         return stackOldest.pop()
     }
-
 }
+
+// * 3.5. Sort Stack
+// Hints: 15, 32, 43
+extension MyStack {
+    // Solution. CtCI. O(n2) time, O(n) space
+    static func sort(stack s: MyStack) {
+        
+        let r = MyStack<T>()
+        
+        while !s.isEmpty() {
+            // Insert each element in s in sorted order into r
+            let tmp = s.pop()
+            
+            while !r.isEmpty() && r.peek()! > tmp! {
+                s.push(item: r.pop()!)
+            }
+            
+            r.push(item: tmp!)
+        }
+        
+        // Copy the elements from r back into s
+        while !r.isEmpty() {
+            s.push(item: r.pop()!)
+        }
+    }
+}
+
+
+
+
+
+
 
 
 

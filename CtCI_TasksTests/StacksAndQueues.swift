@@ -40,7 +40,6 @@ class StackAndQueues: XCTestCase {
         XCTAssertEqual(multiStack.peek(stackNum: 1), 13)
         
         XCTAssertEqual(multiStack.pop(stackNum: 0), 3)
-
     }
     
     // * 3.2. Stack Min
@@ -74,7 +73,6 @@ class StackAndQueues: XCTestCase {
         
         XCTAssertEqual(queueWithStacks.dequeue(), 7)
         XCTAssertEqual(queueWithStacks.dequeue(), 10)
-
     }
     
     func test3_4_2_queue() {
@@ -88,9 +86,27 @@ class StackAndQueues: XCTestCase {
         
         XCTAssertEqual(queueWithStacks.dequeue(), 7)
         XCTAssertEqual(queueWithStacks.dequeue(), 10)
-        
     }
     
+    // * 3.5. Sort Stack
+    // Hints: 15, 32, 43
+    func test3_5_1_sortStack() {
+        
+        let stack = MyStack<Int>()
+        stack.push(item: 7)
+        stack.push(item: 10)
+        stack.push(item: 14)
+        stack.push(item: 2)
+        stack.push(item: 62)
+        
+        MyStack.sort(stack: stack)
+        
+        XCTAssertEqual(stack.pop(), 2)
+        XCTAssertEqual(stack.pop(), 7)
+        XCTAssertEqual(stack.pop(), 10)
+        XCTAssertEqual(stack.pop(), 14)
+        XCTAssertEqual(stack.pop(), 62)
+    }
 }
 
 
