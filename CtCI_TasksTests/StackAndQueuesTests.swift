@@ -1,5 +1,5 @@
 //
-//  StacksAndQueues.swift
+//  StackAndQueuesTests.swift
 //  CtCI_TasksTests
 //
 //  Created by Anton Novoselov on 17/12/2017.
@@ -11,7 +11,7 @@ import XCTest
 
 @testable import CtCI_Tasks
 
-class StackAndQueues: XCTestCase {
+class StackAndQueuesTests: XCTestCase {
     
     // =====================================
     // ==== Chapter 3. Stack and Queues ====

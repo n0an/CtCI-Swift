@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15905C1D226DF1790078A928 /* TreesAndGraphs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15905C1C226DF1790078A928 /* TreesAndGraphs.swift */; };
+		15905C1F226DF1990078A928 /* TreesAndGraphsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15905C1E226DF1990078A928 /* TreesAndGraphsTests.swift */; };
 		15C85CF51FDFDBF00094CED9 /* LinkedListNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C85CF41FDFDBF00094CED9 /* LinkedListNode.swift */; };
 		15C85CF71FDFE1AE0094CED9 /* LinkedListsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C85CF61FDFE1AE0094CED9 /* LinkedListsTests.swift */; };
 		182E0AF11FD464EB009B7AB7 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E0AF01FD464EB009B7AB7 /* main.swift */; };
@@ -14,7 +16,7 @@
 		185748E41FD72F010045CB6C /* ArraysAndStringsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185748E31FD72F010045CB6C /* ArraysAndStringsTests.swift */; };
 		185748E51FD72F630045CB6C /* ArraysAndStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E0AF71FD4669C009B7AB7 /* ArraysAndStrings.swift */; };
 		185748E61FD72FAB0045CB6C /* ArraysAndStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E0AF71FD4669C009B7AB7 /* ArraysAndStrings.swift */; };
-		18A1FD821FE69B8C0003DB45 /* StacksAndQueues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A1FD811FE69B8C0003DB45 /* StacksAndQueues.swift */; };
+		18A1FD821FE69B8C0003DB45 /* StackAndQueuesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A1FD811FE69B8C0003DB45 /* StackAndQueuesTests.swift */; };
 		18BC51DC1FE3B7E700F44F85 /* StackAndQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BC51DB1FE3B7E700F44F85 /* StackAndQueue.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +43,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		15905C1C226DF1790078A928 /* TreesAndGraphs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreesAndGraphs.swift; sourceTree = "<group>"; };
+		15905C1E226DF1990078A928 /* TreesAndGraphsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreesAndGraphsTests.swift; sourceTree = "<group>"; };
 		15C85CF41FDFDBF00094CED9 /* LinkedListNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedListNode.swift; sourceTree = "<group>"; };
 		15C85CF61FDFE1AE0094CED9 /* LinkedListsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedListsTests.swift; sourceTree = "<group>"; };
 		182E0AED1FD464EB009B7AB7 /* CtCI */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CtCI; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,7 +55,7 @@
 		185748D81FD72EF20045CB6C /* CtCI_TasksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CtCI_TasksTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		185748DC1FD72EF20045CB6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		185748E31FD72F010045CB6C /* ArraysAndStringsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArraysAndStringsTests.swift; sourceTree = "<group>"; };
-		18A1FD811FE69B8C0003DB45 /* StacksAndQueues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StacksAndQueues.swift; sourceTree = "<group>"; };
+		18A1FD811FE69B8C0003DB45 /* StackAndQueuesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackAndQueuesTests.swift; sourceTree = "<group>"; };
 		18BC51DB1FE3B7E700F44F85 /* StackAndQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackAndQueue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,6 +119,7 @@
 				182E0AF71FD4669C009B7AB7 /* ArraysAndStrings.swift */,
 				15C85CF41FDFDBF00094CED9 /* LinkedListNode.swift */,
 				18BC51DB1FE3B7E700F44F85 /* StackAndQueue.swift */,
+				15905C1C226DF1790078A928 /* TreesAndGraphs.swift */,
 				185748C01FD72E970045CB6C /* Info.plist */,
 			);
 			path = "CtCI Tasks";
@@ -125,7 +130,8 @@
 			children = (
 				185748E31FD72F010045CB6C /* ArraysAndStringsTests.swift */,
 				15C85CF61FDFE1AE0094CED9 /* LinkedListsTests.swift */,
-				18A1FD811FE69B8C0003DB45 /* StacksAndQueues.swift */,
+				18A1FD811FE69B8C0003DB45 /* StackAndQueuesTests.swift */,
+				15905C1E226DF1990078A928 /* TreesAndGraphsTests.swift */,
 				185748DC1FD72EF20045CB6C /* Info.plist */,
 			);
 			path = CtCI_TasksTests;
@@ -273,6 +279,7 @@
 			files = (
 				18BC51DC1FE3B7E700F44F85 /* StackAndQueue.swift in Sources */,
 				15C85CF51FDFDBF00094CED9 /* LinkedListNode.swift in Sources */,
+				15905C1D226DF1790078A928 /* TreesAndGraphs.swift in Sources */,
 				185748E51FD72F630045CB6C /* ArraysAndStrings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,7 +289,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				15C85CF71FDFE1AE0094CED9 /* LinkedListsTests.swift in Sources */,
-				18A1FD821FE69B8C0003DB45 /* StacksAndQueues.swift in Sources */,
+				18A1FD821FE69B8C0003DB45 /* StackAndQueuesTests.swift in Sources */,
+				15905C1F226DF1990078A928 /* TreesAndGraphsTests.swift in Sources */,
 				185748E41FD72F010045CB6C /* ArraysAndStringsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
