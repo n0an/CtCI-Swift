@@ -16,6 +16,17 @@ class TreesAndGraphsTests: XCTestCase {
         
     }
     
-    
+    func test4_2_minimalTree() {
+        
+        let arr = [1,2,3,4,5]
+        
+        let node = TreeNode.createMinimalBST(arr)
+        
+        TreeNode.inOrderTraversal(node: node)
+        print("=====")
+        TreeNode.preOrderTraversal(node: node)
+        print("=====")
+        TreeNode.postOrderTraversal(node: node)
+    }
     
 }

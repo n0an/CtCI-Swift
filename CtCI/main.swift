@@ -8,5 +8,7 @@
 
 import Foundation
 
-
+// Questions    - 100
+// Solutions    - 204
+// Hints        - 665
 
