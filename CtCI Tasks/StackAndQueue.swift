@@ -114,7 +114,7 @@ class MyQueue<T> {
 }
 
 
-
+// ----------------------------
 // * 3.1. Three in ONe
 // * Hints: 2, 12, 38, 58
 class FixedMultiStack {
@@ -182,7 +182,7 @@ class FixedMultiStack {
    
 }
 
-
+// ----------------------------
 // * 3.2. Stack Min
 // Hints: 27, 59, 78
 class StackWithMin<T>: MyStack<T> where T: Comparable {
@@ -222,6 +222,7 @@ class StackWithMin<T>: MyStack<T> where T: Comparable {
     }
 }
 
+// ----------------------------
 // * 3.4. Queue via Stacks
 // Hints: 98, 114
 // Solution 1. n0an
@@ -294,6 +295,7 @@ class MyQueueWithStacks2<T: Comparable & Equatable> {
     }
 }
 
+// ----------------------------
 // * 3.5. Sort Stack
 // Hints: 15, 32, 43
 extension MyStack {
@@ -319,12 +321,3 @@ extension MyStack {
         }
     }
 }
-
-
-
-
-
-
-
-
-

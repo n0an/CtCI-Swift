@@ -147,7 +147,7 @@ extension Node: Equatable {
 // === Chapter 2. Linked Lists
 
 extension Node {
-    
+    // ----------------------------
     // * 2.1. Remove Dups.
     // * Hints: 9, 40
     
@@ -197,6 +197,7 @@ extension Node {
         }
     }
     
+    // ----------------------------
     // * 2.2. Return Kth to Last
     // * Hints: 8, 25, 41, 67, 126
     // Solution 1. n0an
@@ -294,6 +295,7 @@ extension Node {
         return p2
     }
     
+    // ----------------------------
     // * 2.3. Delete Middle Node. Given only access to that node
     // * Hints: 72
     // Solution 1. CtCI
@@ -310,6 +312,7 @@ extension Node {
         return true
     }
     
+    // ----------------------------
     // * 2.4. Partition.
     // * Hints: 3, 24
     // Solution 1. CtCI
@@ -385,6 +388,7 @@ extension Node {
         return head
     }
     
+    // ----------------------------
     // * 2.5. Sum Lists.
     // * Hints: 7, 30, 71, 95, 109
     // Solution 1. n0an. Task 1 (Reversed order)
@@ -585,6 +589,7 @@ extension Node {
         return node
     }
     
+    // ----------------------------
     // * 2.6. Palindrome
     // * Hints: 5, 13, 29, 61, 101
     // Solution 1. CtCI
@@ -794,6 +799,7 @@ extension Node {
         return current
     }
     
+    // ----------------------------
     // * 2.8. Loop Detection
     // * Hints: 50, 69, 83, 90
     // Solution 1. n0an

@@ -14,10 +14,10 @@ import Foundation
 
 class TreeNode {
     var name: String!
-    var children: [TreeNode]!
+    var children: [TreeNode]?
     
-    var left: TreeNode!
-    var right: TreeNode!
+    var left: TreeNode?
+    var right: TreeNode?
     
     init(name: String) {
         self.name = name
@@ -111,10 +111,11 @@ class Graph {
     
 }
 
+// ----------------------------
 // * 4.1. Route Between Nodes. 121
 // * Hints: 127
 
-
+// ----------------------------
 // * 4.2. Minimal Tree. 121
 // * Hints: 19, 73, 116
 extension TreeNode {
@@ -135,10 +136,43 @@ extension TreeNode {
         return n
     }
 }
-
+// ----------------------------
 // * 4.3. List of Depths
 // * Hints: 107, 123, 135
 
+// ----------------------------
+// * 4.4. Check Balanced
+// * Hints: 21, 33, 49, 105, 124
+extension TreeNode {
+    static func checkHeight(root: TreeNode?) -> Int {
+        guard let root = root else { return -1 }
+        
+        let leftHeight = checkHeight(root: root.left)
+        
+        if leftHeight == Int.min {
+            return Int.min
+        }
+        
+        let rightHeight = checkHeight(root: root.right)
+        
+        if rightHeight == Int.min {
+            return Int.min
+        }
+        
+        let heightDiff = leftHeight - rightHeight
+        
+        if abs(heightDiff) > 1 {
+            return Int.min
+        } else {
+            return max(leftHeight, rightHeight) + 1
+        }
+    }
+    
+    static func isBalanced(root: TreeNode?) -> Bool {
+        print("checkHeight(root: root) == ", checkHeight(root: root))
+        return checkHeight(root: root) != Int.min
+    }
+}
 
 
 
