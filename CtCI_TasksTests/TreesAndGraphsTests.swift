@@ -78,4 +78,50 @@ class TreesAndGraphsTests: XCTestCase {
         XCTAssertFalse(TreeNode.isBalanced(root: nodes2[0]))
         
     }
+    
+    // * 4.5. Validate BST
+    func test4_5_validateBST_True() {
+        let arr = [3, 5, 7, 10, 15, 17, 20, 30]
+        
+        // BST
+        var nodes = arr.map { TreeNode(name: String($0))  }
+        
+        treeNodeWithIntValue(val: 20, nodes: nodes)!.left = treeNodeWithIntValue(val: 10, nodes: nodes)!
+        treeNodeWithIntValue(val: 20, nodes: nodes)!.right = treeNodeWithIntValue(val: 30, nodes: nodes)!
+        
+        treeNodeWithIntValue(val: 10, nodes: nodes)!.left = treeNodeWithIntValue(val: 5, nodes: nodes)!
+        treeNodeWithIntValue(val: 10, nodes: nodes)!.right = treeNodeWithIntValue(val: 15, nodes: nodes)!
+        
+        treeNodeWithIntValue(val: 5, nodes: nodes)!.left = treeNodeWithIntValue(val: 3, nodes: nodes)!
+        treeNodeWithIntValue(val: 5, nodes: nodes)!.right = treeNodeWithIntValue(val: 7, nodes: nodes)!
+        
+        XCTAssertTrue(TreeNode.isBST(root: treeNodeWithIntValue(val: 20, nodes: nodes)!))
+        
+        // NOT BST
+        nodes = arr.map { TreeNode(name: String($0))  }
+        
+        treeNodeWithIntValue(val: 20, nodes: nodes)!.left = treeNodeWithIntValue(val: 10, nodes: nodes)!
+        treeNodeWithIntValue(val: 20, nodes: nodes)!.right = treeNodeWithIntValue(val: 30, nodes: nodes)!
+        
+        treeNodeWithIntValue(val: 30, nodes: nodes)!.left = treeNodeWithIntValue(val: 7, nodes: nodes)!
+        
+        treeNodeWithIntValue(val: 10, nodes: nodes)!.left = treeNodeWithIntValue(val: 5, nodes: nodes)!
+        treeNodeWithIntValue(val: 10, nodes: nodes)!.right = treeNodeWithIntValue(val: 15, nodes: nodes)!
+        
+        treeNodeWithIntValue(val: 5, nodes: nodes)!.left = treeNodeWithIntValue(val: 3, nodes: nodes)!
+        
+        XCTAssertFalse(TreeNode.isBST(root: treeNodeWithIntValue(val: 20, nodes: nodes)!))
+
+    }
+    
+    // MARK: - HELPER METHODS
+    func treeNodeWithIntValue(val: Int, nodes: [TreeNode]) -> TreeNode? {
+        for node in nodes {
+            if node.name == String(val) {
+                return node
+            }
+        }
+        
+        return nil
+    }
 }

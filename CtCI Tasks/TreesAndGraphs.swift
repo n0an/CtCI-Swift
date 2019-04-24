@@ -174,5 +174,26 @@ extension TreeNode {
     }
 }
 
-
+// ----------------------------
+// * 4.5. Validate BST
+extension TreeNode {
+    
+    static func isBST(root: TreeNode?) -> Bool {
+        return isBST(root: root, min: nil, max: nil)
+    }
+    
+    static func isBST(root: TreeNode?, min: Int?, max: Int?) -> Bool {
+        guard let root = root else { return true }
+        
+        if (min != nil && Int(root.name)! <= min!) || (max != nil && Int(root.name)! > max!) {
+            return false
+        }
+        
+        if (!isBST(root: root.left, min: min, max: Int(root.name))) || (!isBST(root: root.right, min: Int(root.name), max: max)) {
+            return false
+        }
+        
+        return true
+    }
+}
 
