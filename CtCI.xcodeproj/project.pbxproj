@@ -10,6 +10,7 @@
 		15905C1D226DF1790078A928 /* TreesAndGraphs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15905C1C226DF1790078A928 /* TreesAndGraphs.swift */; };
 		15905C1F226DF1990078A928 /* TreesAndGraphsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15905C1E226DF1990078A928 /* TreesAndGraphsTests.swift */; };
 		15905C412270AAB70078A928 /* BitManipulationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15905C402270AAB70078A928 /* BitManipulationTests.swift */; };
+		15905C432270AF790078A928 /* BitManipulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15905C422270AF790078A928 /* BitManipulation.swift */; };
 		15C85CF51FDFDBF00094CED9 /* LinkedListNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C85CF41FDFDBF00094CED9 /* LinkedListNode.swift */; };
 		15C85CF71FDFE1AE0094CED9 /* LinkedListsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C85CF61FDFE1AE0094CED9 /* LinkedListsTests.swift */; };
 		182E0AF11FD464EB009B7AB7 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E0AF01FD464EB009B7AB7 /* main.swift */; };
@@ -47,6 +48,7 @@
 		15905C1C226DF1790078A928 /* TreesAndGraphs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreesAndGraphs.swift; sourceTree = "<group>"; };
 		15905C1E226DF1990078A928 /* TreesAndGraphsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreesAndGraphsTests.swift; sourceTree = "<group>"; };
 		15905C402270AAB70078A928 /* BitManipulationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitManipulationTests.swift; sourceTree = "<group>"; };
+		15905C422270AF790078A928 /* BitManipulation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitManipulation.swift; sourceTree = "<group>"; };
 		15C85CF41FDFDBF00094CED9 /* LinkedListNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedListNode.swift; sourceTree = "<group>"; };
 		15C85CF61FDFE1AE0094CED9 /* LinkedListsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedListsTests.swift; sourceTree = "<group>"; };
 		182E0AED1FD464EB009B7AB7 /* CtCI */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CtCI; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,6 +124,7 @@
 				15C85CF41FDFDBF00094CED9 /* LinkedListNode.swift */,
 				18BC51DB1FE3B7E700F44F85 /* StackAndQueue.swift */,
 				15905C1C226DF1790078A928 /* TreesAndGraphs.swift */,
+				15905C422270AF790078A928 /* BitManipulation.swift */,
 				185748C01FD72E970045CB6C /* Info.plist */,
 			);
 			path = "CtCI Tasks";
@@ -283,6 +286,7 @@
 				18BC51DC1FE3B7E700F44F85 /* StackAndQueue.swift in Sources */,
 				15C85CF51FDFDBF00094CED9 /* LinkedListNode.swift in Sources */,
 				15905C1D226DF1790078A928 /* TreesAndGraphs.swift in Sources */,
+				15905C432270AF790078A928 /* BitManipulation.swift in Sources */,
 				185748E51FD72F630045CB6C /* ArraysAndStrings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
